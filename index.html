@@ -1,10 +1,157 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>AARMA ARABIAN RESTAURANT</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #111;
+            color: white;
+        }
+
+        header {
+            background: url('https://images.unsplash.com/photo-1555992336-03a23c3f75f9') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 50px;
+        }
+
+        header p {
+            margin: 20px 0;
+            font-size: 20px;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            background: gold;
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+
+        section {
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 30px;
+            font-size: 35px;
+            color: gold;
+        }
+
+        .menu-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .menu-item {
+            background: #222;
+            padding: 20px;
+            width: 250px;
+            border-radius: 10px;
+        }
+
+        footer {
+            background: #000;
+            padding: 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        iframe {
+            width: 100%;
+            max-width: 600px;
+            height: 300px;
+            border-radius: 10px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 35px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Welcome to AARMA ARABIAN RESTAURANT</h1>
-    <p>Where Indian Spices Meet Arabian Flavors.</p>
+
+<header>
+    <h1>AARMA ARABIAN RESTAURANT</h1>
+    <p>Where Indian Spices Meet Arabian Flavors</p>
+    <a href="#menu" class="btn">View Menu</a>
+</header>
+
+<section id="about">
+    <h2>About Us</h2>
+    <p>
+        Welcome to AARMA Arabian Restaurant. We bring together the rich
+        spices of India and the authentic taste of Arabian cuisine.
+        Experience delicious biryanis, grills, and traditional dishes
+        made with love and quality ingredients.
+    </p>
+</section>
+
+<section id="menu">
+    <h2>Our Menu</h2>
+    <div class="menu-container">
+        <div class="menu-item">
+            <h3>Chicken Biryani</h3>
+            <p>₹250</p>
+        </div>
+        <div class="menu-item">
+            <h3>Mutton Mandi</h3>
+            <p>₹450</p>
+        </div>
+        <div class="menu-item">
+            <h3>Grilled Chicken</h3>
+            <p>₹300</p>
+        </div>
+        <div class="menu-item">
+            <h3>Shawarma</h3>
+            <p>₹180</p>
+        </div>
+    </div>
+</section>
+
+<section id="location">
+    <h2>Our Location</h2>
+    <p>Visit us at your nearest branch!</p>
+    <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.019375870054!2d144.9537363153188!3d-37.81627974202156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d43f1f0f9b1%3A0x5045675218ce6e0!2sRestaurant!5e0!3m2!1sen!2sau!4v1614123456789"
+        allowfullscreen=""
+        loading="lazy">
+    </iframe>
+</section>
+
+<section id="contact">
+    <h2>Contact Us</h2>
+    <p>📞 Phone: +91 7893280116</p>
+    <p>📧 Email: info@aarmaarabian.com</p>
+</section>
+
+<footer>
+    © 2026 AARMA ARABIAN RESTAURANT | All Rights Reserved
+</footer>
+
 </body>
 </html>
