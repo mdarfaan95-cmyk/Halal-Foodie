@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AARMA ARABIAN RESTAURANT</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap" rel="stylesheet">
 
 <style>
 *{
@@ -13,264 +13,276 @@
     padding:0;
     box-sizing:border-box;
     font-family:'Poppins',sans-serif;
-    scroll-behavior:smooth;
 }
 
 body{
-    background:linear-gradient(135deg,#2b0000,#000);
-    color:white;
+    background:linear-gradient(135deg,#fff8e1,#ffe0b2);
+    color:#333;
 }
 
 /* NAVBAR */
 nav{
-    position:fixed;
-    width:100%;
+    background:#d84315;
     padding:15px 50px;
     display:flex;
     justify-content:space-between;
     align-items:center;
-    background:rgba(40,0,0,0.7);
-    backdrop-filter:blur(15px);
-    z-index:1000;
-}
-
-nav h2{
-    color:#ff3c00;
-    text-shadow:0 0 10px #ff3c00;
-}
-
-nav a{
     color:white;
-    margin-left:20px;
-    text-decoration:none;
 }
 
-nav a:hover{
-    color:#ff9100;
-}
-
-/* HERO */
-header{
-    height:100vh;
-    background:linear-gradient(rgba(80,0,0,0.7),rgba(0,0,0,0.8)),
-    url('https://images.unsplash.com/photo-1544025162-d76694265947') center/cover no-repeat;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    padding:20px;
-}
-
-header h1{
-    font-size:50px;
-    color:#ff3c00;
-    animation:glow 2s infinite alternate;
-}
-
-@keyframes glow{
-    from{ text-shadow:0 0 10px #ff3c00; }
-    to{ text-shadow:0 0 25px #ff9100; }
-}
-
-.btn{
-    padding:12px 30px;
-    margin-top:20px;
+nav button{
+    background:white;
     border:none;
-    background:linear-gradient(45deg,#ff3c00,#ff9100);
-    border-radius:30px;
-    color:white;
-    font-weight:bold;
+    padding:8px 15px;
+    border-radius:20px;
     cursor:pointer;
+    font-weight:bold;
+}
+
+/* HEADER */
+header{
+    text-align:center;
+    padding:70px 20px;
+    background:#ff7043;
+    color:white;
+    animation:fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(-30px);}
+    to{opacity:1; transform:translateY(0);}
 }
 
 /* SECTION */
 section{
-    padding:100px 10%;
-    text-align:center;
+    padding:60px 10%;
 }
 
 section h2{
-    color:#ff3c00;
+    text-align:center;
     margin-bottom:40px;
+    color:#bf360c;
 }
 
-/* MENU */
+/* MENU GRID */
 .menu-container{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:30px;
+    gap:25px;
 }
 
 .menu-item{
-    padding:20px;
-    border-radius:20px;
-    background:rgba(255,0,0,0.08);
-    backdrop-filter:blur(15px);
-    border:1px solid rgba(255,0,0,0.4);
+    background:white;
+    padding:15px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    text-align:center;
     transition:0.4s;
+    animation:slideUp 1s ease;
+}
+
+@keyframes slideUp{
+    from{opacity:0; transform:translateY(40px);}
+    to{opacity:1; transform:translateY(0);}
 }
 
 .menu-item:hover{
-    transform:translateY(-10px);
-    box-shadow:0 15px 30px rgba(255,0,0,0.4);
+    transform:scale(1.05);
 }
 
 .menu-item img{
     width:100%;
-    height:160px;
+    height:170px;
     object-fit:cover;
-    border-radius:15px;
+    border-radius:10px;
 }
 
-.order-btn{
-    margin-top:10px;
-    padding:8px 15px;
-    background:#ff9100;
+.price{
+    color:#d84315;
+    font-weight:bold;
+    margin-top:5px;
+}
+
+/* LOGIN MODAL */
+.modal{
+    display:none;
+    position:fixed;
+    z-index:1000;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.5);
+    justify-content:center;
+    align-items:center;
+}
+
+.modal-content{
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    width:300px;
+    text-align:center;
+    animation:fadeIn 0.5s ease;
+}
+
+.modal-content input{
+    width:100%;
+    padding:8px;
+    margin:10px 0;
+}
+
+.modal-content button{
+    background:#d84315;
+    color:white;
     border:none;
+    padding:8px 15px;
     border-radius:20px;
     cursor:pointer;
-    font-weight:bold;
-}
-
-/* CART */
-#cart{
-    position:fixed;
-    right:20px;
-    bottom:20px;
-    background:#ff3c00;
-    padding:15px 20px;
-    border-radius:50px;
-    font-weight:bold;
-}
-
-/* MAP */
-.map-container{
-    border-radius:20px;
-    overflow:hidden;
-    border:2px solid #ff3c00;
-    margin-top:30px;
 }
 
 /* FOOTER */
 footer{
-    background:black;
-    padding:20px;
+    background:#d84315;
+    color:white;
     text-align:center;
-    color:gray;
+    padding:20px;
 }
-
 </style>
 </head>
 
 <body>
 
 <nav>
-    <h2>AARMA | Owner: Md Arfaanuddin</h2>
-    <div>
-        <a href="#about">About</a>
-        <a href="#menu">Menu</a>
-        <a href="#location">Location</a>
-        <a href="#contact">Contact</a>
-    </div>
+    <h2>AARMA ARABIAN RESTAURANT | Owner: Md Arfaanuddin</h2>
+    <button onclick="openLogin()">Login</button>
 </nav>
 
 <header>
-    <h1>AARMA ARABIAN RESTAURANT</h1>
-    <p>🔥 Where Indian Spices Meet Arabian Flavors 🔥</p>
-    <a href="#menu"><button class="btn">Explore Menu</button></a>
+    <h1>Welcome to AARMA Arabian Restaurant</h1>
+    <p>Authentic Arabian & Indian Flavors - Siddipet</p>
 </header>
 
-<section id="about">
-    <h2>About Us</h2>
-    <p>
-        Experience authentic Arabian cuisine blended with rich Indian flavors.
-        Every dish is crafted with passion and authentic spices.
-    </p>
-    <p style="margin-top:20px; font-weight:bold; color:#ff9100;">
-        Proudly Owned & Managed by Md Arfaanuddin
-    </p>
+<section>
+<h2>🍖 7 Types of Mandi</h2>
+<div class="menu-container">
+
+<div class="menu-item">
+<img src="https://source.unsplash.com/400x300/?chicken,mandi">
+<h3>Chicken Mandi</h3>
+<p class="price">₹450</p>
+</div>
+
+<div class="menu-item">
+<img src="https://source.unsplash.com/400x300/?mutton,mandi">
+<h3>Mutton Mandi</h3>
+<p class="price">₹650</p>
+</div>
+
+<div class="menu-item">
+<img src="https://source.unsplash.com/400x300/?fish,mandi">
+<h3>Fish Mandi</h3>
+<p class="price">₹500</p>
+</div>
+
+<div class="menu-item">
+<img src="https://source.unsplash.com/400x300/?prawns,mandi">
+<h3>Prawns Mandi</h3>
+<p class="price">₹700</p>
+</div>
+
+<div class="menu-item">
+<img src="https://source.unsplash.com/400x300/?bbq,chicken">
+<h3>Grilled Chicken Mandi</h3>
+<p class="price">₹550</p>
+</div>
+
+<div class="menu-item">
+<img src="https://source.unsplash.com/400x300/?arabian,food">
+<h3>Teetar Mandi</h3>
+<p class="price">₹800</p>
+</div>
+
+<div class="menu-item">
+<img src="https://source.unsplash.com/400x300/?mandi,rice">
+<h3>BBQ Special Mandi</h3>
+<p class="price">₹750</p>
+</div>
+
+</div>
 </section>
 
-<section id="menu">
-    <h2>🔥 Our Full Spicy Menu 🔥</h2>
+<section>
+<h2>🍚 Biryani Special</h2>
+<div class="menu-container">
 
-    <div class="menu-container">
+<div class="menu-item">
+<img src="https://source.unsplash.com/400x300/?chicken,biryani">
+<h3>Chicken Biryani</h3>
+<p class="price">₹250</p>
+</div>
 
-        <div class="menu-item">
-            <img src="https://images.unsplash.com/photo-1604908176997-4313f79d0c03">
-            <h3>Chicken Biryani</h3>
-            <p>₹250</p>
-            <button class="order-btn" onclick="addToCart()">Add</button>
-        </div>
+<div class="menu-item">
+<img src="https://source.unsplash.com/400x300/?mutton,biryani">
+<h3>Mutton Biryani</h3>
+<p class="price">₹420</p>
+</div>
 
-        <div class="menu-item">
-            <img src="https://images.unsplash.com/photo-1625944525533-473f1f33d3b7">
-            <h3>Fish Curry</h3>
-            <p>₹320</p>
-            <button class="order-btn" onclick="addToCart()">Add</button>
-        </div>
+<div class="menu-item">
+<img src="https://source.unsplash.com/400x300/?fish,biryani">
+<h3>Fish Biryani</h3>
+<p class="price">₹350</p>
+</div>
 
-        <div class="menu-item">
-            <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092">
-            <h3>Grilled Chicken</h3>
-            <p>₹600</p>
-            <button class="order-btn" onclick="addToCart()">Add</button>
-        </div>
-
-        <div class="menu-item">
-            <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950">
-            <h3>Butter Parota</h3>
-            <p>₹30</p>
-            <button class="order-btn" onclick="addToCart()">Add</button>
-        </div>
-
-        <div class="menu-item">
-            <img src="https://images.unsplash.com/photo-1600628422019-9e3e4d6f0e5b">
-            <h3>Rumali Roti</h3>
-            <p>₹25</p>
-            <button class="order-btn" onclick="addToCart()">Add</button>
-        </div>
-
-    </div>
+</div>
 </section>
 
-<section id="location">
-    <h2>📍 Our Location - Siddipet</h2>
-    <p>AARMA Arabian Restaurant, Siddipet, Telangana, India</p>
+<section>
+<h2>🍰 Arabian Delights</h2>
+<div class="menu-container">
 
-    <div class="map-container">
-        <iframe 
-        src="https://www.google.com/maps?q=Siddipet&output=embed"
-        width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy">
-        </iframe>
-    </div>
+<div class="menu-item">
+<img src="https://source.unsplash.com/400x300/?double-ka-meetha">
+<h3>Double Ka Meetha</h3>
+<p class="price">₹120</p>
+</div>
+
+<div class="menu-item">
+<img src="https://source.unsplash.com/400x300/?fruit,salad">
+<h3>Fruit Salad</h3>
+<p class="price">₹100</p>
+</div>
+
+<div class="menu-item">
+<img src="https://source.unsplash.com/400x300/?kunafa">
+<h3>Kunafa</h3>
+<p class="price">₹180</p>
+</div>
+
+</div>
 </section>
-
-<section id="contact">
-    <h2>Contact & Order</h2>
-    <p>📞 +91 7893280116</p>
-    <p>
-        <a href="https://wa.me/917893280116" target="_blank">
-            <button class="btn">Order on WhatsApp</button>
-        </a>
-    </p>
-</section>
-
-<div id="cart">🛒 Cart: <span id="cart-count">0</span></div>
 
 <footer>
-    © 2026 AARMA ARABIAN RESTAURANT | Siddipet <br><br>
-    <span style="color:#ff9100; font-weight:bold;">
-        Owner: Md Arfaanuddin
-    </span>
+© 2026 AARMA ARABIAN RESTAURANT | Siddipet  
+<br>Owner: Md Arfaanuddin
 </footer>
 
+<!-- LOGIN MODAL -->
+<div class="modal" id="loginModal">
+    <div class="modal-content">
+        <h3>Login</h3>
+        <input type="text" placeholder="Username">
+        <input type="password" placeholder="Password">
+        <button onclick="closeLogin()">Submit</button>
+    </div>
+</div>
+
 <script>
-let count = 0;
-function addToCart(){
-    count++;
-    document.getElementById("cart-count").innerText = count;
+function openLogin(){
+    document.getElementById("loginModal").style.display="flex";
+}
+function closeLogin(){
+    document.getElementById("loginModal").style.display="none";
 }
 </script>
 
