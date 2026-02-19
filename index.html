@@ -19,21 +19,14 @@ header h1{font-size:60px;color:gold;}
 header p{font-size:20px;margin-top:10px;}
 section{padding:60px 10%;}
 section h2{text-align:center;margin-bottom:40px;color:gold;font-size:38px;}
-.home-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;text-align:center;}
-.home-card{background:rgba(255,215,0,0.1);padding:25px;border-radius:15px;border:1px solid gold;transition:0.4s;}
-.home-card:hover{transform:translateY(-5px);box-shadow:0 10px 20px rgba(255,215,0,0.3);}
 .menu-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;}
 .menu-item{background:rgba(0,0,0,0.7);padding:15px;border-radius:15px;text-align:center;border:1px solid gold;transition:0.4s;}
 .menu-item:hover{transform:scale(1.05);}
-.menu-image{height:170px;border-radius:10px;margin-bottom:10px;object-fit:cover;}
-.home-hero{height:400px;border-radius:20px;margin-bottom:40px;background:linear-gradient(135deg,#FFD700,#8B0000);display:flex;justify-content:center;alignments:center;font-size:28px;font-weight:bold;color:white;text-align:center;padding:20px;}
+.menu-image{height:170px;border-radius:10px;margin-bottom:10px;object-fit:cover;width:100%;}
 .price{color:gold;font-weight:bold;margin:5px 0;}
 .menu-item button{background:gold;color:black;border:none;padding:6px 12px;border-radius:15px;cursor:pointer;}
 footer{background:black;text-align:center;padding:20px;color:gray;}
 .cart{position:fixed;bottom:20px;right:20px;background:gold;color:black;padding:15px;border-radius:30px;cursor:pointer;font-weight:bold;}
-.address-section{padding:40px 10%;text-align:center;color:white;}
-.address-section img{max-width:100%;border:5px solid gold;border-radius:20px;}
-@media(max-width:768px){header h1{font-size:35px;}section h2{font-size:28px;}}
 </style>
 </head>
 <body>
@@ -51,42 +44,46 @@ footer{background:black;text-align:center;padding:20px;color:gray;}
 <p>Siddipet's Premium Dining Experience</p>
 </header>
 
-<section>
-<div class="home-hero">
-Welcome to AARMA Arabian Restaurant
-<br>Luxury Flavors | Premium Dining | Authentic Experience
-</div>
-</section>
-
 <!-- MANDI -->
 <section>
 <h2>🍖 Mandi Specials</h2>
 <div class="menu-container">
+
+<!-- AI Prompt: "Photorealistic Chicken Mandi on a traditional Arabian platter, top-down view, rich colors, garnished with spices and herbs, professional restaurant lighting, high resolution" -->
 <div class="menu-item">
 <img class="menu-image" src="https://images.pexels.com/photos/46239/mandi-arab-cuisine-food-46239.jpeg" alt="Chicken Mandi">
 <h3>Chicken Mandi</h3><p class="price">₹450</p>
 <button onclick="addToCart('Chicken Mandi - ₹450')">Add</button>
 </div>
+
+<!-- AI Prompt: "Photorealistic Mutton Mandi served with rice and Arabian spices, top-down view, vibrant colors, authentic Middle Eastern style, professional food photography" -->
 <div class="menu-item">
 <img class="menu-image" src="https://images.pexels.com/photos/315755/pexels-photo-315755.jpeg" alt="Mutton Mandi">
 <h3>Mutton Mandi</h3><p class="price">₹650</p>
 <button onclick="addToCart('Mutton Mandi - ₹650')">Add</button>
 </div>
+
+<!-- AI Prompt: "Photorealistic Fish Mandi on a wooden platter, aromatic spices, top-down view, natural lighting, restaurant menu style, high resolution" -->
 <div class="menu-item">
 <img class="menu-image" src="https://images.pexels.com/photos/616404/pexels-photo-616404.jpeg" alt="Fish Mandi">
 <h3>Fish Mandi</h3><p class="price">₹500</p>
 <button onclick="addToCart('Fish Mandi - ₹500')">Add</button>
 </div>
+
+<!-- AI Prompt: "Photorealistic Prawns Mandi with golden rice, garnished with herbs, top-down view, bright appetizing lighting, professional food photography" -->
 <div class="menu-item">
-<img class="menu-image" src="https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg" alt="Prawns">
+<img class="menu-image" src="https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg" alt="Prawns Mandi">
 <h3>Prawns Mandi</h3><p class="price">₹700</p>
 <button onclick="addToCart('Prawns Mandi - ₹700')">Add</button>
 </div>
+
+<!-- AI Prompt: "Photorealistic Teetar (quail) Mandi, served on ornate platter, Arabian spices, top-down view, restaurant menu photography, high resolution" -->
 <div class="menu-item">
-<img class="menu-image" src="https://images.pexels.com/photos/675951/pexels-photo-675951.jpeg" alt="Game Mandi">
+<img class="menu-image" src="https://images.pexels.com/photos/675951/pexels-photo-675951.jpeg" alt="Teetar Mandi">
 <h3>Teetar Mandi</h3><p class="price">₹800</p>
 <button onclick="addToCart('Teetar Mandi - ₹800')">Add</button>
 </div>
+
 </div>
 </section>
 
@@ -94,16 +91,21 @@ Welcome to AARMA Arabian Restaurant
 <section>
 <h2>🥣 Haleem Specials</h2>
 <div class="menu-container">
+
+<!-- AI Prompt: "Photorealistic Chicken Haleem in a bowl, creamy texture, garnished with fried onions, overhead top-down view, restaurant lighting, professional food style" -->
 <div class="menu-item">
 <img class="menu-image" src="https://images.pexels.com/photos/5938/food-soup-restaurant-meal.jpg" alt="Chicken Haleem">
 <h3>Chicken Haleem</h3><p class="price">₹220</p>
 <button onclick="addToCart('Chicken Haleem - ₹220')">Add</button>
 </div>
+
+<!-- AI Prompt: "Photorealistic Mutton Haleem served in bowl, rich and creamy texture, garnished, overhead view, authentic Arabian dish photography" -->
 <div class="menu-item">
 <img class="menu-image" src="https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg" alt="Mutton Haleem">
 <h3>Mutton Haleem</h3><p class="price">₹350</p>
 <button onclick="addToCart('Mutton Haleem - ₹350')">Add</button>
 </div>
+
 </div>
 </section>
 
@@ -111,21 +113,28 @@ Welcome to AARMA Arabian Restaurant
 <section>
 <h2>🍰 Delights</h2>
 <div class="menu-container">
+
+<!-- AI Prompt: "Photorealistic African Pudding dessert in small bowl, caramel color, garnished with nuts, top-down view, restaurant menu style, bright natural lighting" -->
 <div class="menu-item">
 <img class="menu-image" src="https://images.pexels.com/photos/302680/pexels-photo-302680.jpeg" alt="African Pudding">
 <h3>African Pudding</h3><p class="price">₹180</p>
 <button onclick="addToCart('African Pudding - ₹180')">Add</button>
 </div>
+
+<!-- AI Prompt: "Photorealistic Double Ka Meetha (Indian bread pudding) dessert, garnished with nuts and saffron, top-down view, high resolution, professional food photography" -->
 <div class="menu-item">
 <img class="menu-image" src="https://images.pexels.com/photos/302680/pexels-photo-302680.jpeg" alt="Double Ka Meetha">
 <h3>Double Ka Meetha</h3><p class="price">₹150</p>
 <button onclick="addToCart('Double Ka Meetha - ₹150')">Add</button>
 </div>
+
+<!-- AI Prompt: "Photorealistic Shahdood Malai dessert, creamy texture with saffron and pistachio garnish, top-down view, restaurant menu card style, bright natural lighting" -->
 <div class="menu-item">
-<img class="menu-image" src="https://images.pexels.com/photos/302680/pexels-photo-302680.jpeg" alt="Malai Dessert">
+<img class="menu-image" src="https://images.pexels.com/photos/302680/pexels-photo-302680.jpeg" alt="Shahdood Malai">
 <h3>Shahdood Malai</h3><p class="price">₹200</p>
 <button onclick="addToCart('Shahdood Malai - ₹200')">Add</button>
 </div>
+
 </div>
 </section>
 
