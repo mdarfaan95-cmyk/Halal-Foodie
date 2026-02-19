@@ -3,198 +3,55 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AARMA Arabian Restaurant | Md Arfaanuddin</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap" rel="stylesheet">
+<title>AARMA Arabian Restaurant | Siddipet</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-
-body{
-background:linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)),
-url('https://source.unsplash.com/1600x900/?arabian,restaurant,luxury');
-background-size:cover;
-background-attachment:fixed;
-color:white;
-scroll-behavior:smooth;
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; scroll-behavior:smooth; }
+body {
+    background: url('https://source.unsplash.com/1600x900/?spices,food,luxury') center/cover no-repeat fixed;
+    color:#fff;
 }
-
-nav{
-background:rgba(0,0,0,0.85);
-padding:15px 40px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-border-bottom:2px solid gold;
-position:sticky;
-top:0;
+nav {
+    display:flex; justify-content:space-between; align-items:center; padding:20px 40px;
+    background:rgba(0,0,0,0.7); backdrop-filter:blur(10px);
 }
-
-nav h2{color:gold;}
-
-nav button{
-background:gold;
-border:none;
-padding:8px 15px;
-border-radius:20px;
-cursor:pointer;
-font-weight:bold;
-margin-left:10px;
+nav h2 { color:gold; font-size:18px; }
+nav div button {
+    margin-left:10px; padding:8px 15px; border:none; border-radius:20px; font-weight:bold; cursor:pointer; background:gold; color:black;
 }
-
-header{
-text-align:center;
-padding:100px 20px;
-animation:fadeIn 2s;
+header {
+    text-align:center; padding:100px 20px;
+    background:rgba(0,0,0,0.5);
 }
-
-header h1{
-font-size:45px;
-color:gold;
-margin-bottom:10px;
+header h1 { font-size:60px; color:gold; animation:fadeIn 2s; }
+header p { font-size:20px; margin-top:10px; }
+@keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+section { padding:60px 10%; }
+section h2 { text-align:center; margin-bottom:40px; color:gold; font-size:40px; }
+.menu-container {
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:25px;
 }
-
-@keyframes fadeIn{
-from{opacity:0; transform:translateY(-20px);}
-to{opacity:1; transform:translateY(0);}
+.menu-item {
+    background:rgba(0,0,0,0.5); padding:15px; border-radius:15px; text-align:center; transition:0.4s; backdrop-filter:blur(5px);
 }
-
-.slider{
-height:300px;
-background-size:cover;
-background-position:center;
-border-radius:20px;
-margin:30px auto;
-width:90%;
-transition:1s;
-box-shadow:0 0 25px gold;
-}
-
-section{
-padding:60px 10%;
-}
-
-section h2{
-text-align:center;
-margin-bottom:40px;
-color:gold;
-font-size:30px;
-}
-
-.menu-container{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
-}
-
-.menu-item{
-background:rgba(255,255,255,0.1);
-padding:15px;
-border-radius:15px;
-backdrop-filter:blur(10px);
-text-align:center;
-transition:0.4s;
-}
-
-.menu-item:hover{
-transform:scale(1.08);
-box-shadow:0 0 20px gold;
-}
-
-.menu-item img{
-width:100%;
-height:170px;
-object-fit:cover;
-border-radius:10px;
-}
-
-.price{
-color:gold;
-font-weight:bold;
-margin:5px 0;
-}
-
-.menu-item button{
-background:gold;
-color:black;
-border:none;
-padding:6px 12px;
-border-radius:15px;
-cursor:pointer;
-font-weight:bold;
-}
-
-.cart{
-position:fixed;
-bottom:20px;
-right:20px;
-background:gold;
-color:black;
-padding:15px;
-border-radius:30px;
-cursor:pointer;
-font-weight:bold;
-}
-
-footer{
-background:rgba(0,0,0,0.9);
-color:gold;
-text-align:center;
-padding:20px;
-border-top:2px solid gold;
-margin-top:40px;
-}
-
-.modal{
-display:none;
-position:fixed;
-z-index:1000;
-left:0;
-top:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.8);
-justify-content:center;
-align-items:center;
-}
-
-.modal-content{
-background:black;
-padding:30px;
-border-radius:15px;
-width:300px;
-text-align:center;
-border:2px solid gold;
-}
-
-.modal-content input{
-width:100%;
-padding:8px;
-margin:10px 0;
-}
-
-.modal-content button{
-background:gold;
-color:black;
-border:none;
-padding:8px 15px;
-border-radius:20px;
-cursor:pointer;
-font-weight:bold;
-}
-
-.total-box{
-margin-top:10px;
-color:gold;
-font-weight:bold;
-}
+.menu-item:hover { transform:scale(1.05); box-shadow:0 10px 20px rgba(255,215,0,0.3); }
+.menu-item img { width:100%; height:170px; object-fit:cover; border-radius:10px; margin-bottom:10px; }
+.price { color:gold; font-weight:bold; margin:5px 0; }
+.menu-item button { background:gold; color:black; border:none; padding:6px 12px; border-radius:15px; cursor:pointer; }
+footer { background:rgba(0,0,0,0.7); text-align:center; padding:20px; font-size:14px; color:gray; }
+.cart { position:fixed; bottom:20px; right:20px; background:gold; color:black; padding:15px; border-radius:30px; cursor:pointer; font-weight:bold; }
+.modal { display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.7); justify-content:center; align-items:center; }
+.modal-content { background:rgba(0,0,0,0.8); padding:30px; border-radius:15px; width:300px; text-align:center; color:white; }
+.modal-content input { width:100%; padding:8px; margin:10px 0; border-radius:10px; border:none; }
+.modal-content button { background:gold; color:black; border:none; padding:8px 15px; border-radius:20px; cursor:pointer; font-weight:bold; }
+@media(max-width:768px){ header h1{font-size:35px;} section h2{font-size:28px;} }
 </style>
 </head>
-
 <body>
 
 <nav>
-<h2>AARMA Arabian Restaurant 👑 | Owner: Md Arfaanuddin</h2>
+<h2>AARMA Arabian Restaurant | Owner: Md Arfaanuddin</h2>
 <div>
 <button onclick="openLogin()">Login</button>
 <button onclick="openRegister()">Register</button>
@@ -203,11 +60,10 @@ font-weight:bold;
 
 <header>
 <h1>Luxury Arabian & Indian Flavors</h1>
-<p>Siddipet’s Premium Dining Experience</p>
+<p>Siddipet's Premium Dining Experience</p>
 </header>
 
-<div class="slider" id="slider"></div>
-
+<!-- Mandi Section -->
 <section>
 <h2>🍖 Mandi Specials</h2>
 <div class="menu-container">
@@ -216,109 +72,132 @@ font-weight:bold;
 <img src="https://source.unsplash.com/400x300/?chicken,mandi">
 <h3>Chicken Mandi</h3>
 <p class="price">₹450</p>
-<button onclick="addToCart('Chicken Mandi',450)">Add</button>
+<button onclick="addToCart('Chicken Mandi - ₹450')">Add</button>
 </div>
 
 <div class="menu-item">
 <img src="https://source.unsplash.com/400x300/?mutton,mandi">
 <h3>Mutton Mandi</h3>
 <p class="price">₹650</p>
-<button onclick="addToCart('Mutton Mandi',650)">Add</button>
+<button onclick="addToCart('Mutton Mandi - ₹650')">Add</button>
+</div>
+
+<div class="menu-item">
+<img src="https://source.unsplash.com/400x300/?fish,mandi">
+<h3>Fish Mandi</h3>
+<p class="price">₹500</p>
+<button onclick="addToCart('Fish Mandi - ₹500')">Add</button>
+</div>
+
+<div class="menu-item">
+<img src="https://source.unsplash.com/400x300/?prawns,mandi">
+<h3>Prawns Mandi</h3>
+<p class="price">₹700</p>
+<button onclick="addToCart('Prawns Mandi - ₹700')">Add</button>
+</div>
+
+<div class="menu-item">
+<img src="https://source.unsplash.com/400x300/?quail,mandi">
+<h3>Teetar Mandi</h3>
+<p class="price">₹800</p>
+<button onclick="addToCart('Teetar Mandi - ₹800')">Add</button>
 </div>
 
 </div>
 </section>
 
-<div class="cart" onclick="checkout()">
-🛒 Cart (<span id="cartCount">0</span>)
-<div class="total-box">Total ₹<span id="totalAmount">0</span></div>
+<!-- Haleem Section -->
+<section>
+<h2>🥣 Haleem Specials</h2>
+<div class="menu-container">
+
+<div class="menu-item">
+<img src="https://source.unsplash.com/400x300/?chicken,haleem">
+<h3>Chicken Haleem</h3>
+<p class="price">₹220</p>
+<button onclick="addToCart('Chicken Haleem - ₹220')">Add</button>
 </div>
 
-<footer>
-© 2026 AARMA Arabian Restaurant | Siddipet  
-<br>Founder: Md Arfaanuddin
-</footer>
+<div class="menu-item">
+<img src="https://source.unsplash.com/400x300/?mutton,haleem">
+<h3>Mutton Haleem</h3>
+<p class="price">₹350</p>
+<button onclick="addToCart('Mutton Haleem - ₹350')">Add</button>
+</div>
 
-<!-- LOGIN -->
+</div>
+</section>
+
+<!-- Desserts Section -->
+<section>
+<h2>🍰 Delights</h2>
+<div class="menu-container">
+
+<div class="menu-item">
+<img src="https://source.unsplash.com/400x300/?african,pudding,dessert">
+<h3>African Pudding</h3>
+<p class="price">₹180</p>
+<button onclick="addToCart('African Pudding - ₹180')">Add</button>
+</div>
+
+<div class="menu-item">
+<img src="https://source.unsplash.com/400x300/?double-ka-meetha">
+<h3>Double Ka Meetha</h3>
+<p class="price">₹150</p>
+<button onclick="addToCart('Double Ka Meetha - ₹150')">Add</button>
+</div>
+
+<div class="menu-item">
+<img src="https://source.unsplash.com/400x300/?shahdood,malai,dessert">
+<h3>Shahdood Malai</h3>
+<p class="price">₹200</p>
+<button onclick="addToCart('Shahdood Malai - ₹200')">Add</button>
+</div>
+
+</div>
+</section>
+
+<div class="cart" onclick="checkout()">🛒 Cart (<span id="cartCount">0</span>)</div>
+
+<footer>© 2026 AARMA Arabian Restaurant | Siddipet | Owner: Md Arfaanuddin</footer>
+
+<!-- LOGIN MODAL -->
 <div class="modal" id="loginModal">
 <div class="modal-content">
-<h3 style="color:gold;">Royal Login</h3>
-<input type="text" id="loginUser" placeholder="Username">
-<input type="password" id="loginPass" placeholder="Password">
-<button onclick="validateLogin()">Login</button>
-<p id="loginError" style="color:red;"></p>
+<h3>Login</h3>
+<input type="text" placeholder="Username">
+<input type="password" placeholder="Password">
+<button onclick="closeLogin()">Login</button>
 </div>
 </div>
 
-<!-- REGISTER -->
+<!-- REGISTER MODAL -->
 <div class="modal" id="registerModal">
 <div class="modal-content">
-<h3 style="color:gold;">Create Account</h3>
-<input type="text" id="regUser" placeholder="Username">
-<input type="password" id="regPass" placeholder="Password">
-<button onclick="registerUser()">Register</button>
+<h3>Register</h3>
+<input type="text" placeholder="Username">
+<input type="email" placeholder="Email">
+<input type="password" placeholder="Password">
+<button onclick="closeRegister()">Register</button>
 </div>
 </div>
 
 <script>
-
 let cart = [];
-let total = 0;
-let savedUser = "";
-let savedPass = "";
-
-const images = [
-"https://source.unsplash.com/1200x600/?arabian,food",
-"https://source.unsplash.com/1200x600/?luxury,restaurant",
-"https://source.unsplash.com/1200x600/?mandi,biryani"
-];
-
-let index = 0;
-setInterval(()=>{
-document.getElementById("slider").style.backgroundImage = "url('"+images[index]+"')";
-index = (index + 1) % images.length;
-},3000);
-
-function addToCart(item,price){
-cart.push(item);
-total += price;
-document.getElementById("cartCount").innerText = cart.length;
-document.getElementById("totalAmount").innerText = total;
+function addToCart(item){
+    cart.push(item);
+    document.getElementById("cartCount").innerText = cart.length;
 }
-
 function checkout(){
-if(cart.length === 0){
-alert("Cart is empty!");
-return;
+    if(cart.length === 0){ alert("Cart is empty!"); return; }
+    let message = "Hello AARMA Restaurant,%0AOrder:%0A";
+    cart.forEach(item => message += "- " + item + "%0A");
+    window.open("https://wa.me/917893280116?text=" + message);
 }
-let message = "Hello AARMA Restaurant,%0AOrder:%0A";
-cart.forEach(item => message += "- " + item + "%0A");
-message += "Total: ₹"+total;
-window.open("https://wa.me/917893280116?text=" + message);
-}
-
 function openLogin(){document.getElementById("loginModal").style.display="flex";}
+function closeLogin(){document.getElementById("loginModal").style.display="none";}
 function openRegister(){document.getElementById("registerModal").style.display="flex";}
-
-function validateLogin(){
-let user = document.getElementById("loginUser").value;
-let pass = document.getElementById("loginPass").value;
-
-if(user === savedUser && pass === savedPass){
-alert("Welcome " + user + " 👑");
-document.getElementById("loginModal").style.display="none";
-}else{
-document.getElementById("loginError").innerText="Invalid Credentials!";
-}
-}
-
-function registerUser(){
-savedUser = document.getElementById("regUser").value;
-savedPass = document.getElementById("regPass").value;
-alert("Account Created Successfully 👑");
-document.getElementById("registerModal").style.display="none";
-}
-
+function closeRegister(){document.getElementById("registerModal").style.display="none";}
 </script>
 
 </body>
