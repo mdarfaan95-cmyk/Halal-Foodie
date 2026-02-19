@@ -8,7 +8,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
-
 *{
     margin:0;
     padding:0;
@@ -18,79 +17,71 @@
 }
 
 body{
-    background:#0f0f0f;
+    background:linear-gradient(135deg,#2b0000,#000);
     color:white;
 }
 
 /* NAVBAR */
-
 nav{
     position:fixed;
     width:100%;
-    padding:20px 50px;
+    padding:15px 50px;
     display:flex;
     justify-content:space-between;
     align-items:center;
-    background:rgba(0,0,0,0.7);
-    backdrop-filter:blur(10px);
+    background:rgba(40,0,0,0.7);
+    backdrop-filter:blur(15px);
     z-index:1000;
 }
 
 nav h2{
-    color:gold;
+    color:#ff3c00;
+    text-shadow:0 0 10px #ff3c00;
 }
 
 nav a{
     color:white;
     margin-left:20px;
     text-decoration:none;
-    font-weight:500;
 }
 
 nav a:hover{
-    color:gold;
+    color:#ff9100;
 }
 
 /* HERO */
-
 header{
     height:100vh;
-    background:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),
+    background:linear-gradient(rgba(80,0,0,0.7),rgba(0,0,0,0.8)),
     url('https://images.unsplash.com/photo-1544025162-d76694265947') center/cover no-repeat;
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
     text-align:center;
-    padding:20px;
 }
 
 header h1{
-    font-size:60px;
-    color:gold;
+    font-size:55px;
+    color:#ff3c00;
+    animation:glow 2s infinite alternate;
 }
 
-header p{
-    margin:20px 0;
-    font-size:20px;
+@keyframes glow{
+    from{ text-shadow:0 0 10px #ff3c00; }
+    to{ text-shadow:0 0 25px #ff9100; }
 }
 
 .btn{
     padding:12px 30px;
+    margin-top:20px;
     border:none;
-    background:linear-gradient(45deg,gold,orange);
-    color:black;
-    font-weight:bold;
+    background:linear-gradient(45deg,#ff3c00,#ff9100);
     border-radius:30px;
+    color:white;
+    font-weight:bold;
     cursor:pointer;
-    transition:0.3s;
 }
-
-.btn:hover{
-    transform:scale(1.1);
-}
-
-/* SECTION */
 
 section{
     padding:100px 10%;
@@ -98,13 +89,11 @@ section{
 }
 
 section h2{
-    font-size:40px;
+    color:#ff3c00;
     margin-bottom:40px;
-    color:gold;
 }
 
 /* MENU */
-
 .menu-container{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -114,74 +103,63 @@ section h2{
 .menu-item{
     padding:20px;
     border-radius:20px;
-    background:rgba(255,255,255,0.05);
-    backdrop-filter:blur(10px);
-    border:1px solid rgba(255,255,255,0.1);
+    background:rgba(255,0,0,0.08);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,0,0,0.4);
     transition:0.4s;
-    text-align:center;
-    position:relative;
-    overflow:hidden;
+}
+
+.menu-item:hover{
+    transform:translateY(-10px);
+    box-shadow:0 15px 30px rgba(255,0,0,0.4);
 }
 
 .menu-item img{
     width:100%;
-    height:180px;
+    height:160px;
     object-fit:cover;
     border-radius:15px;
-    margin-bottom:15px;
-}
-
-.menu-item:hover{
-    transform:translateY(-10px);
-    box-shadow:0 15px 30px rgba(255,215,0,0.3);
 }
 
 .order-btn{
     margin-top:10px;
-    padding:8px 18px;
-    background:linear-gradient(45deg,gold,orange);
+    padding:8px 15px;
+    background:#ff9100;
     border:none;
     border-radius:20px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+/* CART */
+#cart{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    background:#ff3c00;
+    padding:15px 20px;
+    border-radius:50px;
     font-weight:bold;
     cursor:pointer;
-    transition:0.3s;
 }
 
-.order-btn:hover{
-    transform:scale(1.1);
-}
-}
-
-.menu-item:hover{
-    transform:translateY(-10px);
-    background:rgba(255,215,0,0.1);
-}
-
-.menu-item h3{
-    margin-bottom:10px;
-}
-
-/* CONTACT */
-
-.contact p{
-    margin:10px 0;
-    font-size:18px;
+/* MAP */
+.map-container{
+    border-radius:20px;
+    overflow:hidden;
+    border:2px solid #ff3c00;
+    margin-top:30px;
 }
 
 /* FOOTER */
-
-footer{
-    background:black;
-    padding:20px;
-    text-align:center;
-    font-size:14px;
-    color:gray;
-}
-
-@media(max-width:768px){
-    header h1{
-        font-size:35px;
-    }
+{<footer>
+    © 2026 AARMA ARABIAN RESTAURANT | Siddipet <br><br>
+    <span style="color:#ff9100; font-weight:bold;">
+        Owner: Md Arfaanuddin
+    </span><br>
+    Designed with ❤️ for Excellence
+</footer>
+    
 }
 
 </style>
@@ -192,130 +170,97 @@ footer{
 <nav>
     <h2>AARMA</h2>
     <div>
-        <a href="#about">About</a>
         <a href="#menu">Menu</a>
+        <a href="#location">Location</a>
         <a href="#contact">Contact</a>
     </div>
 </nav>
 
 <header>
     <h1>AARMA ARABIAN RESTAURANT</h1>
-    <p>Where Indian Spices Meet Arabian Flavors</p>
+    <p>🔥 Where Indian Spices Meet Arabian Flavors 🔥</p>
     <a href="#menu"><button class="btn">Explore Menu</button></a>
 </header>
 
-<section id="about">
-    <h2>About Us</h2>
+<section id="menu">
+    <h2>🔥 Our Spicy Menu 🔥</h2>
+
+    <div class="menu-container">
+
+        <div class="menu-item">
+            <img src="https://images.unsplash.com/photo-1604908176997-4313f79d0c03">
+            <h3>Chicken Biryani</h3>
+            <p>₹250</p>
+            <button class="order-btn" onclick="addToCart('Chicken Biryani')">Add</button>
+        </div>
+
+        <div class="menu-item">
+            <img src="https://images.unsplash.com/photo-1625944525533-473f1f33d3b7">
+            <h3>Fish Curry</h3>
+            <p>₹320</p>
+            <button class="order-btn" onclick="addToCart('Fish Curry')">Add</button>
+        </div>
+
+        <div class="menu-item">
+            <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092">
+            <h3>Grilled Chicken</h3>
+            <p>₹600</p>
+            <button class="order-btn" onclick="addToCart('Grilled Chicken')">Add</button>
+        </div>
+
+        <div class="menu-item">
+            <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950">
+            <h3>Butter Parota</h3>
+            <p>₹30</p>
+            <button class="order-btn" onclick="addToCart('Butter Parota')">Add</button>
+        </div>
+
+        <div class="menu-item">
+            <img src="https://images.unsplash.com/photo-1600628422019-9e3e4d6f0e5b">
+            <h3>Rumali Roti</h3>
+            <p>₹25</p>
+            <button class="order-btn" onclick="addToCart('Rumali Roti')">Add</button>
+        </div>
+
+    </div>
+</section>
+
+<section id="location">
+    <h2>📍 Our Location - Siddipet</h2>
+    <p>AARMA Arabian Restaurant, Siddipet, Telangana, India</p>
+
+    <div class="map-container">
+        <iframe 
+        src="https://www.google.com/maps?q=Siddipet&output=embed"
+        width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy">
+        </iframe>
+    </div>
+</section>
+
+<section id="contact">
+    <h2>Contact & Order</h2>
+    <p>📞 +91 7893280116</p>
     <p>
-        Experience authentic Arabian cuisine blended with the rich
-        flavors of India. Our chefs craft every dish with passion,
-        quality ingredients, and traditional recipes.
+        <a href="https://wa.me/917893280116" target="_blank">
+            <button class="btn">Order on WhatsApp</button>
+        </a>
     </p>
 </section>
 
-<section id="menu">
-    <section id="menu">
-    <h2>Our Signature Menu</h2>
-
-    <h3 style="color:orange; margin-bottom:20px;">🔥 Special Haleem</h3>
-    <div class="menu-container">
-        <div class="menu-item">
-            <h3>Chicken Haleem</h3>
-            <p>₹220</p>
-        </div>
-        <div class="menu-item">
-            <h3>Mutton Haleem</h3>
-            <p>₹350</p>
-        </div>
-        <div class="menu-item">
-            <h3>Beef Haleem</h3>
-            <p>₹300</p>
-        </div>
-    </div>
-
-    <br><br>
-
-    <h3 style="color:orange; margin-bottom:20px;">🍛 Biryani & Mandi</h3>
-    <div class="menu-container">
-        <div class="menu-item">
-            <h3>Chicken Biryani</h3>
-            <p>₹250</p>
-        </div>
-        <div class="menu-item">
-            <h3>Mutton Biryani</h3>
-            <p>₹420</p>
-        </div>
-        <div class="menu-item">
-            <h3>Mutton Mandi</h3>
-            <p>₹450</p>
-        </div>
-        <div class="menu-item">
-            <h3>Beef Mandi</h3>
-            <p>₹400</p>
-        </div>
-    </div>
-
-    <br><br>
-
-    <h3 style="color:orange; margin-bottom:20px;">🍲 Special Curries</h3>
-    <div class="menu-container">
-        <div class="menu-item">
-            <h3>Butter Chicken</h3>
-            <p>₹280</p>
-        </div>
-        <div class="menu-item">
-            <h3>Chicken Curry</h3>
-            <p>₹240</p>
-        </div>
-        <div class="menu-item">
-            <h3>Mutton Curry</h3>
-            <p>₹380</p>
-        </div>
-        <div class="menu-item">
-            <h3>Beef Curry</h3>
-            <p>₹320</p>
-        </div>
-        <div class="menu-item">
-            <h3>Chicken Korma</h3>
-            <p>₹270</p>
-        </div>
-        <div class="menu-item">
-            <h3>Mutton Korma</h3>
-            <p>₹400</p>
-        </div>
-    </div>
-
-</section>
-    <h2>Our Signature Menu</h2>
-    <div class="menu-container">
-        <div class="menu-item">
-            <h3>Chicken Biryani</h3>
-            <p>₹250</p>
-        </div>
-        <div class="menu-item">
-            <h3>Mutton Mandi</h3>
-            <p>₹450</p>
-        </div>
-        <div class="menu-item">
-            <h3>Grilled Chicken</h3>
-            <p>₹300</p>
-        </div>
-        <div class="menu-item">
-            <h3>Shawarma</h3>
-            <p>₹180</p>
-        </div>
-    </div>
-</section>
-
-<section id="contact" class="contact">
-    <h2>Contact Us</h2>
-    <p>📞 +91 7893280116</p>
-    <p>📧 info@aarmaarabian.com</p>
-</section>
+<div id="cart">🛒 Cart: <span id="cart-count">0</span></div>
 
 <footer>
-    © 2026 AARMA ARABIAN RESTAURANT | All Rights Reserved
+    © 2026 AARMA ARABIAN RESTAURANT | Siddipet | All Rights Reserved
 </footer>
+
+<script>
+let count = 0;
+function addToCart(item){
+    count++;
+    document.getElementById("cart-count").innerText = count;
+    alert(item + " added to cart!");
+}
+</script>
 
 </body>
 </html>
