@@ -80,6 +80,7 @@
   <h2>🥣 Haleem Specials</h2>
   <div class="menu-container">
     <div class="menu-item"><h3>Chicken Haleem</h3><p class="price">₹220</p><button onclick="addToCart('Chicken Haleem',220)">Add</button></div>
+    <div class="menu-item"><h3>Mutton Haleem</h3><p class="price">₹350</p><button onclick="addToCart('Mutton Haleem',350)">Add</button></div>
   </div>
 </section>
 
@@ -87,6 +88,16 @@
   <h2>🍰 Delights</h2>
   <div class="menu-container">
     <div class="menu-item"><h3>African Pudding</h3><p class="price">₹180</p><button onclick="addToCart('African Pudding',180)">Add</button></div>
+    <div class="menu-item"><h3>Double Ka Meetha</h3><p class="price">₹200</p><button onclick="addToCart('Double Ka Meetha',200)">Add</button></div>
+  </div>
+</section>
+
+<section>
+  <h2>✨ Specials</h2>
+  <div class="menu-container">
+    <div class="menu-item"><h3>More Kichdi</h3><p class="price">₹250</p><button onclick="addToCart('More Kichdi',250)">Add</button></div>
+    <div class="menu-item"><h3>Khatta Kheem</h3><p class="price">₹300</p><button onclick="addToCart('Khatta Kheem',300)">Add</button></div>
+    <div class="menu-item"><h3>Sheri Special</h3><p class="price">₹450</p><button onclick="addToCart('Sheri Special',450)">Add</button></div>
   </div>
 </section>
 
@@ -159,23 +170,38 @@ function showOrderForm(){
 function closeOrderForm(){ const f=document.getElementById('orderForm'); if(f)f.remove(); const o=document.getElementById('overlay'); if(o)o.remove(); }
 
 function submitOrder(){
-  const n=document.getElementById('customerName').value.trim();
-  const p=document.getElementById('customerPhone').value.trim();
-  const a=document.getElementById('customerAddress').value.trim();
-  if(!n||!p||!a){ alert('Please fill all fields'); return; }
-  let details='';
-  cart.forEach(i=>details+=`${i.name} x ${i.qty} = ₹${i.price*i.qty}\n`);
+  const n = document.getElementById('customerName').value.trim();
+  const p = document.getElementById('customerPhone').value.trim();
+  const a = document.getElementById('customerAddress').value.trim();
+  if(!n || !p || !a){ alert('Please fill all fields'); return; }
+
+  // Build order details
+  let details = '';
+  cart.forEach(i => details += `${i.name} x ${i.qty} = ₹${i.price*i.qty}\n`);
+  let total = cart.reduce((sum, i) => sum + i.price*i.qty, 0);
+
+  // WhatsApp order
+  const message = `New Order from ${n}\nPhone: ${p}\nAddress: ${a}\n\nOrder Details:\n${details}\nTotal: ₹${total}`;
+  const encodedMessage = encodeURIComponent(message);
+  const whatsappNumber = '7893280116';
+  window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
+
+  // EmailJS order (backup to Gmail)
   emailjs.send("YOUR_SERVICE_ID","YOUR_TEMPLATE_ID",{
     customer_name:n,
     customer_phone:p,
     customer_address:a,
     order_details:details
   }).then(function(response){
-    alert('Order placed successfully!');
-    cart=[]; renderCart(); closeOrderForm();
+    console.log('Email sent successfully');
   }, function(error){
-    alert('Failed to send order. Please try again.');
+    console.log('EmailJS error:', error);
   });
+
+  alert('Your order is ready to send via WhatsApp!');
+  cart = [];
+  renderCart();
+  closeOrderForm();
 }
 </script>
 </body>
