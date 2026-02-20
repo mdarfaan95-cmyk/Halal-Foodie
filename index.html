@@ -5,203 +5,190 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AARMA Arabian Restaurant | Siddipet</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-<script src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
 <style>
-  * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; scroll-behavior: smooth; }
-  body { background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1600'); background-size: cover; background-attachment: fixed; color:#f9f3e7; overflow-x:hidden; }
-  nav { display:flex; justify-content:space-between; align-items:center; padding:20px 40px; background:rgba(50,0,0,0.85); border-bottom: 3px solid #ffb700; }
-  nav h2 { color:#ffb700; font-size:18px; font-family:'Playfair Display', serif; }
-  nav button { margin-left:10px; padding:10px 18px; border:none; border-radius:25px; background:#ffb700; color:#000; font-weight:bold; cursor:pointer; transition:0.3s; box-shadow:0 4px 10px rgba(0,0,0,0.3); }
-  nav button:hover { background:#e6a700; transform: scale(1.05); }
-  header { text-align:center; padding:100px 20px; animation: fadeIn 2s ease-in; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1617196030882-b63d40886d03?crop=entropy&cs=tinysrgb&fit=max&w=1600&q=80') no-repeat center center; background-size: cover; border-radius: 15px; position: relative; overflow: hidden; }
-  header h1 { font-size:70px; color:#ffb700; font-family:'Playfair Display', serif; text-shadow: 2px 2px 10px rgba(0,0,0,0.7); animation: slideDown 1.5s ease-out; }
-  header p { font-size:24px; margin-top:10px; color:#f3e5d5; }
-  .chicken { position:absolute; width:60px; height:60px; object-fit:contain; animation: floatChicken 10s linear infinite; }
-  .chicken:nth-child(1){ top:10%; left:5%; animation-delay:0s; }
-  .chicken:nth-child(2){ top:30%; left:80%; animation-delay:2s; }
-  .chicken:nth-child(3){ top:60%; left:25%; animation-delay:4s; }
-  .chicken:nth-child(4){ top:15%; left:60%; animation-delay:6s; }
-  .chicken:nth-child(5){ top:50%; left:50%; animation-delay:3s; }
-  @keyframes floatChicken { 0% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-30px) rotate(180deg); } 100% { transform: translateY(0) rotate(360deg); } }
-  section { padding:60px 10%; background: rgba(50,0,0,0.7); border-radius:20px; margin-bottom:40px; animation: fadeIn 1.5s ease-in; position:relative; overflow:hidden; }
-  section h2 { text-align:center; margin-bottom:40px; color:#ffb700; font-size:42px; font-family:'Playfair Display', serif; text-shadow: 1px 1px 5px rgba(0,0,0,0.6); }
-  .menu-container { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:25px; }
-  .menu-item { background:rgba(50,0,0,0.8); padding:25px; border-radius:20px; text-align:center; border:2px solid #ffb700; transition:0.5s; box-shadow: 0 5px 15px rgba(0,0,0,0.4); }
-  .menu-item:hover { transform: scale(1.07); box-shadow: 0 12px 25px rgba(0,0,0,0.7); border-color:#ffdb4d; background:linear-gradient(45deg, rgba(80,0,0,0.8), rgba(120,20,0,0.8)); }
-  .menu-item h3 { margin-bottom:10px; font-family:'Playfair Display', serif; color:#ffd966; }
-  .price { color:#ffb700; font-weight:bold; margin:10px 0; font-size:20px; }
-  .menu-item button { background:#ffb700; color:#000; border:none; padding:10px 18px; border-radius:20px; cursor:pointer; font-weight:bold; transition:0.3s; box-shadow:0 4px 8px rgba(0,0,0,0.4); }
-  .menu-item button:hover { background:#e6a700; transform: scale(1.05); }
-  .cart { position:fixed; bottom:20px; right:20px; background:#ffb700; color:black; padding:15px 20px; border-radius:30px; cursor:pointer; font-weight:bold; font-size:18px; z-index:1000; box-shadow:0 4px 10px rgba(0,0,0,0.4); animation: pulse 2s infinite; }
-  .cart-items { position:fixed; bottom:70px; right:20px; background:rgba(50,0,0,0.95); color:white; padding:20px; border-radius:15px; max-width:320px; display:none; z-index:1000; max-height:400px; overflow-y:auto; }
-  .cart-items h3 { margin-bottom:10px; color:#ffb700; }
-  .cart-items ul { list-style:none; }
-  .cart-items ul li { margin-bottom:8px; border-bottom:1px solid #ffb700; padding-bottom:5px; }
-  .cart-items ul li button { margin-left: 6px; background: #ffb700; border: none; border-radius: 5px; padding: 2px 6px; cursor: pointer; font-weight: bold; color: black; }
-  footer { background:#330000; text-align:center; padding:25px; color:#f3e5d5; font-size:15px; border-top:2px solid #ffb700; }
-  footer a { color:#ffb700; text-decoration:none; }
-  @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
-  @keyframes slideDown { from {transform:translateY(-50px); opacity:0;} to {transform:translateY(0); opacity:1;} }
-  @keyframes pulse { 0%,100%{ transform: scale(1); } 50%{ transform: scale(1.1); } }
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;scroll-behavior:smooth;}
+body{background:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1600');background-size:cover;color:#f9f3e7;}
+nav{display:flex;justify-content:space-between;align-items:center;padding:20px 40px;background:rgba(50,0,0,0.85);border-bottom:3px solid #ffb700;}
+nav h2{color:#ffb700;font-size:18px;font-family:'Playfair Display',serif;}
+nav button{margin-left:10px;padding:10px 18px;border:none;border-radius:25px;background:#ffb700;color:#000;font-weight:bold;cursor:pointer;}
+nav button:hover{background:#e6a700;transform:scale(1.05);}
+header{text-align:center;padding:100px 20px;background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url('https://images.unsplash.com/photo-1617196030882-b63d40886d03?crop=entropy&cs=tinysrgb&fit=max&w=1600&q=80') no-repeat center center;background-size:cover;border-radius:15px;position:relative;overflow:hidden;}
+header h1{font-size:70px;color:#ffb700;font-family:'Playfair Display',serif;text-shadow:2px 2px 10px rgba(0,0,0,0.7);}
+header p{font-size:24px;margin-top:10px;color:#f3e5d5;}
+section{padding:60px 10%;background:rgba(50,0,0,0.7);border-radius:20px;margin-bottom:40px;}
+section h2{text-align:center;margin-bottom:40px;color:#ffb700;font-size:42px;font-family:'Playfair Display',serif;}
+.menu-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;}
+.menu-item{background:rgba(50,0,0,0.8);padding:25px;border-radius:20px;text-align:center;border:2px solid #ffb700;transition:0.5s;box-shadow:0 5px 15px rgba(0,0,0,0.4);}
+.menu-item:hover{transform: scale(1.07);box-shadow:0 12px 25px rgba(0,0,0,0.7);border-color:#ffdb4d;background:linear-gradient(45deg, rgba(80,0,0,0.8), rgba(120,20,0,0.8));}
+.menu-item h3{margin-bottom:10px;font-family:'Playfair Display',serif;color:#ffd966;}
+.price{color:#ffb700;font-weight:bold;margin:10px 0;font-size:20px;}
+.menu-item button{background:#ffb700;color:#000;border:none;padding:10px 18px;border-radius:20px;cursor:pointer;font-weight:bold;transition:0.3s;}
+.menu-item button:hover{background:#e6a700;transform:scale(1.05);}
+.cart{position:fixed;bottom:20px;right:20px;background:#ffb700;color:black;padding:15px 20px;border-radius:30px;cursor:pointer;font-weight:bold;font-size:18px;z-index:1000;box-shadow:0 4px 10px rgba(0,0,0,0.4);}
+.cart-items{position:fixed;bottom:70px;right:20px;background:rgba(50,0,0,0.95);color:white;padding:20px;border-radius:15px;max-width:320px;display:none;z-index:1000;max-height:400px;overflow-y:auto;}
+.cart-items h3{margin-bottom:10px;color:#ffb700;}
+.cart-items ul{list-style:none;}
+.cart-items ul li{margin-bottom:8px;border-bottom:1px solid #ffb700;padding-bottom:5px;}
+.cart-items ul li button{margin-left:6px;background:#ffb700;border:none;border-radius:5px;padding:2px 6px;cursor:pointer;font-weight:bold;color:black;}
+footer{background:#330000;text-align:center;padding:25px;color:#f3e5d5;font-size:15px;border-top:2px solid #ffb700;}
+footer a{color:#ffb700;text-decoration:none;}
 </style>
 </head>
 <body>
-<script>
-(function(){emailjs.init("YOUR_USER_ID");})(); // Replace YOUR_USER_ID with EmailJS user ID
-</script>
 
 <nav>
-  <h2>AARMA Arabian Restaurant | Owner: Md Arfaanuddin</h2>
+<h2>AARMA Arabian Restaurant | Owner: Md Arfaanuddin</h2>
 </nav>
 
 <header>
-  <h1>Luxury Arabian & Indian Flavors</h1>
-  <p>Siddipet's Premium Dining Experience</p>
-  <img src="https://images.unsplash.com/photo-1604908177527-54a11980f87f?crop=entropy&cs=tinysrgb&fit=max&w=60&h=60&q=80" class="chicken">
+<h1>Luxury Arabian & Indian Flavors</h1>
+<p>Siddipet's Premium Dining Experience</p>
 </header>
 
 <!-- Menu Sections -->
 <section>
-  <h2>🍖 Mandi Specials</h2>
-  <div class="menu-container">
-    <div class="menu-item"><h3>Chicken Mandi</h3><p class="price">₹450</p><button onclick="addToCart('Chicken Mandi',450)">Add</button></div>
-    <div class="menu-item"><h3>Mutton Mandi</h3><p class="price">₹650</p><button onclick="addToCart('Mutton Mandi',650)">Add</button></div>
-  </div>
+<h2>🍖 Mandi Specials</h2>
+<div class="menu-container">
+<div class="menu-item"><h3>Chicken Mandi</h3><p class="price">₹450</p><button onclick="addToCart('Chicken Mandi',450)">Add</button></div>
+<div class="menu-item"><h3>Mutton Mandi</h3><p class="price">₹650</p><button onclick="addToCart('Mutton Mandi',650)">Add</button></div>
+</div>
 </section>
 
 <section>
-  <h2>🔥 Grill & BBQ Specials</h2>
-  <div class="menu-container">
-    <div class="menu-item"><h3>Grilled Chicken</h3><p class="price">₹400</p><button onclick="addToCart('Grilled Chicken',400)">Add</button></div>
-  </div>
+<h2>🔥 Grill & BBQ Specials</h2>
+<div class="menu-container">
+<div class="menu-item"><h3>Grilled Chicken</h3><p class="price">₹400</p><button onclick="addToCart('Grilled Chicken',400)">Add</button></div>
+</div>
 </section>
 
 <section>
-  <h2>🥣 Haleem Specials</h2>
-  <div class="menu-container">
-    <div class="menu-item"><h3>Chicken Haleem</h3><p class="price">₹220</p><button onclick="addToCart('Chicken Haleem',220)">Add</button></div>
-    <div class="menu-item"><h3>Mutton Haleem</h3><p class="price">₹350</p><button onclick="addToCart('Mutton Haleem',350)">Add</button></div>
-  </div>
+<h2>🥣 Haleem Specials</h2>
+<div class="menu-container">
+<div class="menu-item"><h3>Chicken Haleem</h3><p class="price">₹220</p><button onclick="addToCart('Chicken Haleem',220)">Add</button></div>
+<div class="menu-item"><h3>Mutton Haleem</h3><p class="price">₹350</p><button onclick="addToCart('Mutton Haleem',350)">Add</button></div>
+</div>
 </section>
 
 <section>
-  <h2>🍰 Delights</h2>
-  <div class="menu-container">
-    <div class="menu-item"><h3>African Pudding</h3><p class="price">₹180</p><button onclick="addToCart('African Pudding',180)">Add</button></div>
-    <div class="menu-item"><h3>Double Ka Meetha</h3><p class="price">₹200</p><button onclick="addToCart('Double Ka Meetha',200)">Add</button></div>
-  </div>
+<h2>🍰 Delights</h2>
+<div class="menu-container">
+<div class="menu-item"><h3>African Pudding</h3><p class="price">₹180</p><button onclick="addToCart('African Pudding',180)">Add</button></div>
+<div class="menu-item"><h3>Double Ka Meetha</h3><p class="price">₹200</p><button onclick="addToCart('Double Ka Meetha',200)">Add</button></div>
+</div>
 </section>
 
 <section>
-  <h2>✨ Specials</h2>
-  <div class="menu-container">
-    <div class="menu-item"><h3>Kichdi</h3><p class="price">₹150</p><button onclick="addToCart('More Kichdi',250)">Add</button></div>
-    <div class="menu-item"><h3>Khatta&Kheema</h3><p class="price">₹100</p><button onclick="addToCart('Khatta Kheem',300)">Add</button></div>
-    <div class="menu-item"><h3>Ramadan Sehri Special</h3><p class="price">₹450</p><button onclick="addToCart('Sheri Special',450)">Add</button></div>
-  </div>
+<h2>✨ Specials</h2>
+<div class="menu-container">
+<div class="menu-item"><h3>Kichdi</h3><p class="price">₹150</p><button onclick="addToCart('Kichdi',150)">Add</button></div>
+<div class="menu-item"><h3>Khatta&Kheema</h3><p class="price">₹100</p><button onclick="addToCart('Khatta Kheem',100)">Add</button></div>
+<div class="menu-item"><h3>Ramadan Sehri Special</h3><p class="price">₹450</p><button onclick="addToCart('Sheri Special',450)">Add</button></div>
+</div>
 </section>
 
 <!-- Cart -->
 <div class="cart" onclick="toggleCart()">🛒 Cart</div>
 <div class="cart-items" id="cartItems">
-  <h3>Your Cart</h3>
-  <ul id="cartList"><li>Your cart is empty</li></ul>
+<h3>Your Cart</h3>
+<ul id="cartList"><li>Your cart is empty</li></ul>
 </div>
 
 <footer>
-  &copy; 2026 AARMA Arabian Restaurant | Luxurious & Spicy <br/>
-  Contact: <a href="mailto:mdarfaan95@gmail.com">mdarfaan95@gmail.com</a>
+&copy; 2026 AARMA Arabian Restaurant | Luxurious & Spicy <br/>
+Contact: <a href="mailto:mdarfaan95@gmail.com">mdarfaan95@gmail.com</a>
 </footer>
 
 <script>
+// Firebase Config (Replace with your Firebase keys)
+const firebaseConfig = {
+  apiKey: "YOUR_FIREBASE_APIKEY",
+  authDomain: "YOUR_FIREBASE_AUTHDOMAIN",
+  databaseURL: "YOUR_FIREBASE_DBURL",
+  projectId: "YOUR_FIREBASE_PROJECTID",
+  storageBucket: "YOUR_FIREBASE_BUCKET",
+  messagingSenderId: "YOUR_FIREBASE_SENDERID",
+  appId: "YOUR_FIREBASE_APPID"
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+
+// Cart Logic
 let cart=[];
-function addToCart(name,price){
-  const existing=cart.find(i=>i.name===name);
-  if(existing){ existing.qty++; } else { cart.push({name:name,price:price,qty:1}); }
-  renderCart();
-}
-function removeItem(name){ cart=cart.filter(i=>i.name!==name); renderCart(); }
-function changeQty(name,delta){ const item=cart.find(i=>i.name===name); if(!item)return; item.qty+=delta; if(item.qty<1) removeItem(name); else renderCart(); }
+function addToCart(name,price){const existing=cart.find(i=>i.name===name);if(existing){existing.qty++;}else{cart.push({name:name,price:price,qty:1});}renderCart();}
+function removeItem(name){cart=cart.filter(i=>i.name!==name);renderCart();}
+function changeQty(name,delta){const item=cart.find(i=>i.name===name);if(!item)return;item.qty+=delta;if(item.qty<1) removeItem(name); else renderCart();}
 function renderCart(){
-  const list=document.getElementById('cartList');
-  list.innerHTML='';
-  if(cart.length===0){ list.innerHTML='<li>Your cart is empty</li>'; document.getElementById('cartItems').style.display='none'; return; }
-  let total=0;
-  cart.forEach(item=>{
-    total+=item.price*item.qty;
-    const li=document.createElement('li');
-    li.innerHTML=`<strong>${item.name}</strong> - ₹${item.price} x ${item.qty}
-      <button onclick="changeQty('${item.name}',1)">+</button>
-      <button onclick="changeQty('${item.name}',-1)">-</button>
-      <button onclick="removeItem('${item.name}')">Remove</button>`;
-    list.appendChild(li);
-  });
-  const totalLi=document.createElement('li');
-  totalLi.style.marginTop='15px';
-  totalLi.innerHTML=`<strong>Total: ₹${total}</strong>`;
-  list.appendChild(totalLi);
-  const orderBtn=document.createElement('button');
-  orderBtn.textContent="Place Order";
-  orderBtn.style.marginTop='10px'; orderBtn.style.padding='10px 15px';
-  orderBtn.style.backgroundColor='#ffb700'; orderBtn.style.color='black';
-  orderBtn.style.border='none'; orderBtn.style.borderRadius='15px'; orderBtn.style.cursor='pointer';
-  orderBtn.onclick=showOrderForm; list.appendChild(orderBtn);
-  document.getElementById('cartItems').style.display='block';
+const list=document.getElementById('cartList');list.innerHTML='';
+if(cart.length===0){list.innerHTML='<li>Your cart is empty</li>';document.getElementById('cartItems').style.display='none';return;}
+let total=0;
+cart.forEach(item=>{total+=item.price*item.qty;const li=document.createElement('li');li.innerHTML=`<strong>${item.name}</strong> - ₹${item.price} x ${item.qty}
+<button onclick="changeQty('${item.name}',1)">+</button>
+<button onclick="changeQty('${item.name}',-1)">-</button>
+<button onclick="removeItem('${item.name}')">Remove</button>`;list.appendChild(li);});
+const totalLi=document.createElement('li');totalLi.style.marginTop='15px';totalLi.innerHTML=`<strong>Total: ₹${total}</strong>`;list.appendChild(totalLi);
+const orderBtn=document.createElement('button');orderBtn.textContent="Place Order";orderBtn.style.marginTop='10px';orderBtn.style.padding='10px 15px';orderBtn.style.backgroundColor='#ffb700';orderBtn.style.color='black';orderBtn.style.border='none';orderBtn.style.borderRadius='15px';orderBtn.style.cursor='pointer';orderBtn.onclick=showOrderForm;list.appendChild(orderBtn);
+document.getElementById('cartItems').style.display='block';
 }
-function toggleCart(){ const cartDiv=document.getElementById('cartItems'); cartDiv.style.display=(cartDiv.style.display==='block')?'none':'block'; }
+function toggleCart(){const cartDiv=document.getElementById('cartItems');cartDiv.style.display=(cartDiv.style.display==='block')?'none':'block';}
 
+// Order Form
 function showOrderForm(){
-  if(document.getElementById('orderForm')) return;
-  const formHTML=`
-  <div id="orderForm" style="position:fixed; top:50%; left:50%; transform:translate(-50%,-50%);
-      background:#330000; padding:20px; border-radius:10px; z-index:2000; max-width:320px;
-      box-shadow:0 0 15px #ffb700; color:#f3e5d5;">
-    <h3 style="color:#ffb700; margin-bottom:15px;">Place Your Order</h3>
-    <label>Name:</label><br/><input type="text" id="customerName" style="width:100%; margin-bottom:10px; padding:5px;"><br/>
-    <label>Phone:</label><br/><input type="tel" id="customerPhone" style="width:100%; margin-bottom:10px; padding:5px;"><br/>
-    <label>Address:</label><br/><textarea id="customerAddress" style="width:100%; margin-bottom:10px; padding:5px;" rows="3"></textarea><br/>
-    <button onclick="submitOrder()" style="background:#ffb700;color:black;border:none;padding:10px 20px;border-radius:15px;cursor:pointer;font-weight:bold;margin-right:10px;">Submit</button>
-    <button onclick="closeOrderForm()" style="background:#555;color:white;border:none;padding:10px 20px;border-radius:15px;cursor:pointer;">Cancel</button>
-  </div>
-  <div id="overlay" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:1000;" onclick="closeOrderForm()"></div>`;
-  document.body.insertAdjacentHTML('beforeend',formHTML);
+if(document.getElementById('orderForm')) return;
+const formHTML=`
+<div id="orderForm" style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
+background:#330000;padding:20px;border-radius:10px;z-index:2000;max-width:320px;
+box-shadow:0 0 15px #ffb700;color:#f3e5d5;">
+<h3 style="color:#ffb700;margin-bottom:15px;">Place Your Order</h3>
+<label>Name:</label><br/><input type="text" id="customerName" style="width:100%;margin-bottom:10px;padding:5px;"><br/>
+<label>Phone:</label><br/><input type="tel" id="customerPhone" style="width:100%;margin-bottom:10px;padding:5px;"><br/>
+<label>Address:</label><br/><textarea id="customerAddress" style="width:100%;margin-bottom:10px;padding:5px;" rows="3"></textarea><br/>
+<button onclick="submitOrder()" style="background:#ffb700;color:black;border:none;padding:10px 20px;border-radius:15px;cursor:pointer;font-weight:bold;margin-right:10px;">Submit</button>
+<button onclick="closeOrderForm()" style="background:#555;color:white;border:none;padding:10px 20px;border-radius:15px;cursor:pointer;">Cancel</button>
+</div>
+<div id="overlay" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:1000;" onclick="closeOrderForm()"></div>`;
+document.body.insertAdjacentHTML('beforeend',formHTML);
 }
-
-function closeOrderForm(){ const f=document.getElementById('orderForm'); if(f)f.remove(); const o=document.getElementById('overlay'); if(o)o.remove(); }
+function closeOrderForm(){const f=document.getElementById('orderForm');if(f)f.remove();const o=document.getElementById('overlay');if(o)o.remove();}
 
 function submitOrder(){
-  const n = document.getElementById('customerName').value.trim();
-  const p = document.getElementById('customerPhone').value.trim();
-  const a = document.getElementById('customerAddress').value.trim();
-  if(!n || !p || !a){ alert('Please fill all fields'); return; }
+const n=document.getElementById('customerName').value.trim();
+const p=document.getElementById('customerPhone').value.trim();
+const a=document.getElementById('customerAddress').value.trim();
+if(!n||!p||!a){alert('Please fill all fields');return;}
 
-  // Build order details
-  let details = '';
-  cart.forEach(i => details += `${i.name} x ${i.qty} = ₹${i.price*i.qty}\n`);
-  let total = cart.reduce((sum, i) => sum + i.price*i.qty, 0);
+// Get Location
+navigator.geolocation.getCurrentPosition(function(pos){
+const lat=pos.coords.latitude; const lng=pos.coords.longitude;
 
-  // WhatsApp order
-  const message = `New Order from ${n}\nPhone: ${p}\nAddress: ${a}\n\nOrder Details:\n${details}\nTotal: ₹${total}`;
-  const encodedMessage = encodeURIComponent(message);
-  const whatsappNumber = '7893280116';
-  window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
+// Build Order Details
+let details=''; cart.forEach(i=>details+=`${i.name} x ${i.qty} = ₹${i.price*i.qty}\n`);
+let total=cart.reduce((sum,i)=>sum+i.price*i.qty,0);
+const orderId='ORD'+Date.now();
 
-  // EmailJS order (backup to Gmail)
-  emailjs.send("YOUR_SERVICE_ID","YOUR_TEMPLATE_ID",{
-    customer_name:n,
-    customer_phone:p,
-    customer_address:a,
-    order_details:details
-  }).then(function(response){
-    console.log('Email sent successfully');
-  }, function(error){
-    console.log('EmailJS error:', error);
-  });
+// Save to Firebase
+db.ref('orders/'+orderId).set({
+id:orderId,
+name:n,
+phone:p,
+address:a,
+lat:lat,
+lng:lng,
+cart:cart,
+total:total,
+status:'Pending',
+time:new Date().toLocaleString()
+}).then(()=>{ alert('Order placed successfully!'); sendWhatsApp(orderId,n,p,total); cart=[]; renderCart(); closeOrderForm(); });
 
-  alert('Your order is ready to send via WhatsApp!');
-  cart = [];
-  renderCart();
-  closeOrderForm();
+}, function(err){alert('Please allow location access for delivery!');});
+}
+
+// WhatsApp Notification
+function sendWhatsApp(orderId,name,phone,total){
+const message=`New Order ID: ${orderId}\nCustomer: ${name}\nPhone: ${phone}\nTotal: ₹${total}`;
+const encoded=encodeURIComponent(message);
+window.open(`https://wa.me/7893280116?text=${encoded}`,'_blank');
 }
 </script>
 </body>
