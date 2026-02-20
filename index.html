@@ -10,7 +10,7 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
 body{
-background:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),
+background:linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8)),
 url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1600');
 background-size:cover;
 background-attachment:fixed;
@@ -41,11 +41,11 @@ url('https://images.unsplash.com/photo-1604908177527-54a11980f87f?q=80&w=1600');
 background-size:cover;
 }
 header h1{
-font-size:60px;
+font-size:55px;
 color:gold;
 font-family:'Playfair Display',serif;
 }
-header p{font-size:22px;margin-top:10px}
+header p{font-size:20px;margin-top:10px}
 
 /* RAMADAN BANNER */
 .banner{
@@ -64,8 +64,8 @@ animation:pulse 2s infinite;
 
 /* SECTION */
 section{
-padding:60px 10%;
-background:rgba(50,0,0,0.85);
+padding:60px 8%;
+background:rgba(50,0,0,0.9);
 margin:40px;
 border-radius:20px;
 }
@@ -74,7 +74,7 @@ text-align:center;
 color:gold;
 margin-bottom:40px;
 font-family:'Playfair Display',serif;
-font-size:40px;
+font-size:38px;
 }
 
 /* MENU GRID */
@@ -105,18 +105,19 @@ margin-bottom:15px;
 }
 .menu-item h3{color:#ffd966}
 .price{color:gold;font-weight:bold;margin:10px 0}
+
 .menu-item button{
 background:gold;
 border:none;
-padding:10px 18px;
+padding:8px 15px;
 border-radius:20px;
 font-weight:bold;
 cursor:pointer;
 }
 .menu-item button:hover{background:#e6b800}
 
-/* CART */
-.cart{
+/* CART BUTTON */
+.cart-btn{
 position:fixed;
 bottom:20px;
 right:20px;
@@ -126,31 +127,51 @@ padding:15px 20px;
 border-radius:30px;
 cursor:pointer;
 font-weight:bold;
+box-shadow:0 0 15px gold;
 }
 
-.cart-items{
+/* CART POPUP */
+.cart-box{
 position:fixed;
-bottom:80px;
-right:20px;
-background:#330000;
+right:-400px;
+top:0;
+width:350px;
+height:100%;
+background:#220000;
 padding:20px;
-border-radius:15px;
-display:none;
-max-width:320px;
-max-height:400px;
+transition:0.4s;
 overflow-y:auto;
+z-index:2000;
+}
+.cart-box.active{
+right:0;
+}
+.cart-box h3{color:gold;margin-bottom:15px}
+
+.cart-box ul{list-style:none}
+.cart-box li{
+margin-bottom:12px;
+border-bottom:1px solid gold;
+padding-bottom:8px;
+font-size:14px;
 }
 
-.cart-items h3{color:gold;margin-bottom:10px}
-.cart-items ul{list-style:none}
-.cart-items li{margin-bottom:8px;border-bottom:1px solid gold}
+.qty-btn{
+background:gold;
+border:none;
+padding:2px 6px;
+margin:0 4px;
+border-radius:5px;
+cursor:pointer;
+}
 
-/* REVIEWS */
-.review{
-background:#400000;
-padding:20px;
-border-radius:15px;
-margin-bottom:15px;
+.remove-btn{
+background:red;
+color:white;
+border:none;
+padding:3px 6px;
+border-radius:5px;
+cursor:pointer;
 }
 
 /* FOOTER */
@@ -159,11 +180,12 @@ background:#220000;
 padding:25px;
 text-align:center;
 border-top:2px solid gold;
+margin-top:40px;
 }
 
 /* RESPONSIVE */
 @media(max-width:768px){
-header h1{font-size:40px}
+header h1{font-size:35px}
 section{margin:20px}
 }
 </style>
@@ -183,7 +205,6 @@ section{margin:20px}
 <p>Siddipet's Premium Dining Experience</p>
 </header>
 
-<!-- MENU SECTION -->
 <section>
 <h2>🍖 Mandi Specials</h2>
 <div class="menu-container">
@@ -240,54 +261,15 @@ section{margin:20px}
 </div>
 </section>
 
-<section>
-<h2>🍰 Desserts</h2>
-<div class="menu-container">
+<!-- CART BUTTON -->
+<div class="cart-btn" onclick="toggleCart()">🛒 Cart</div>
 
-<div class="menu-item">
-<img src="https://images.unsplash.com/photo-1588195538311-60a7f16e4f1c?q=80&w=800">
-<h3>Double Ka Meetha</h3>
-<p class="price">₹200</p>
-<button onclick="addToCart('Double Ka Meetha',200)">Add</button>
-</div>
-
-<div class="menu-item">
-<img src="https://images.unsplash.com/photo-1606312619070-d48b4c652a52?q=80&w=800">
-<h3>African Pudding</h3>
-<p class="price">₹180</p>
-<button onclick="addToCart('African Pudding',180)">Add</button>
-</div>
-
-<div class="menu-item">
-<img src="https://images.unsplash.com/photo-1551024709-8f23befc6c23?q=80&w=800">
-<h3>Shahdood Malai</h3>
-<p class="price">₹220</p>
-<button onclick="addToCart('Shahdood Malai',220)">Add</button>
-</div>
-
-</div>
-</section>
-
-<section>
-<h2>⭐ Customer Reviews</h2>
-<div class="review">"Best Mandi in Siddipet! Luxury taste!" ⭐⭐⭐⭐⭐</div>
-<div class="review">"Haleem was amazing during Ramadan." ⭐⭐⭐⭐⭐</div>
-</section>
-
-<section>
-<h2>📍 Our Location</h2>
-<iframe 
-src="https://www.google.com/maps?q=Siddipet&output=embed" 
-width="100%" height="300" 
-style="border-radius:15px;">
-</iframe>
-</section>
-
-<div class="cart" onclick="toggleCart()">🛒 Cart</div>
-<div class="cart-items" id="cartItems">
+<!-- CART BOX -->
+<div class="cart-box" id="cartBox">
 <h3>Your Cart</h3>
-<ul id="cartList"><li>Cart is empty</li></ul>
-<button onclick="placeOrder()" style="margin-top:10px;background:gold;border:none;padding:10px;border-radius:10px;">Order via WhatsApp</button>
+<ul id="cartList"></ul>
+<h4 id="totalAmount"></h4>
+<button onclick="placeOrder()" style="margin-top:10px;background:gold;border:none;padding:10px;border-radius:10px;width:100%;font-weight:bold;">Order via WhatsApp</button>
 </div>
 
 <footer>
@@ -306,33 +288,69 @@ renderCart();
 
 function renderCart(){
 let list=document.getElementById("cartList");
+let totalBox=document.getElementById("totalAmount");
 list.innerHTML="";
+let total=0;
+
+cart.forEach(item=>{
+let li=document.createElement("li");
+let itemTotal=item.price*item.qty;
+total+=itemTotal;
+
+li.innerHTML=`
+${item.name}<br>
+<button class="qty-btn" onclick="changeQty('${item.name}',-1)">-</button>
+${item.qty}
+<button class="qty-btn" onclick="changeQty('${item.name}',1)">+</button>
+= ₹${itemTotal}
+<button class="remove-btn" onclick="removeItem('${item.name}')">X</button>
+`;
+list.appendChild(li);
+});
+
+totalBox.innerHTML="Total: ₹"+total;
+
 if(cart.length===0){
 list.innerHTML="<li>Cart is empty</li>";
-return;
+totalBox.innerHTML="";
 }
-let total=0;
-cart.forEach(item=>{
-total+=item.price*item.qty;
-list.innerHTML+=`<li>${item.name} x ${item.qty} = ₹${item.price*item.qty}</li>`;
-});
-list.innerHTML+=`<li><strong>Total: ₹${total}</strong></li>`;
+}
+
+function changeQty(name,value){
+let item=cart.find(i=>i.name===name);
+if(!item)return;
+item.qty+=value;
+if(item.qty<=0){cart=cart.filter(i=>i.name!==name);}
+renderCart();
+}
+
+function removeItem(name){
+cart=cart.filter(i=>i.name!==name);
+renderCart();
 }
 
 function toggleCart(){
-let c=document.getElementById("cartItems");
-c.style.display=c.style.display==="block"?"none":"block";
+document.getElementById("cartBox").classList.toggle("active");
 }
 
 function placeOrder(){
-if(cart.length===0){alert("Cart empty");return;}
+if(cart.length===0){alert("Cart is empty!");return;}
+
 let message="New Order:%0A";
+let total=0;
+
 cart.forEach(i=>{
-message+=`${i.name} x ${i.qty} = ₹${i.price*i.qty}%0A`;
+let itemTotal=i.price*i.qty;
+total+=itemTotal;
+message+=`${i.name} x ${i.qty} = ₹${itemTotal}%0A`;
 });
-let total=cart.reduce((s,i)=>s+i.price*i.qty,0);
+
 message+=`Total: ₹${total}`;
-window.open(`https://wa.me/7893280116?text=${message}`);
+
+// 🔥 PUT YOUR WHATSAPP NUMBER WITH 91 (NO +)
+let phone="917893280116";
+
+window.open(`https://wa.me/${phone}?text=${message}`,"_blank");
 }
 </script>
 
