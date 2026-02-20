@@ -142,13 +142,14 @@ padding:20px;
 transition:0.4s;
 overflow-y:auto;
 z-index:2000;
+border-left:3px solid gold;
 }
 .cart-box.active{
 right:0;
 }
 .cart-box h3{color:gold;margin-bottom:15px}
 
-.cart-box ul{list-style:none}
+.cart-box ul{list-style:none;padding-left:0}
 .cart-box li{
 margin-bottom:12px;
 border-bottom:1px solid gold;
@@ -174,6 +175,16 @@ border-radius:5px;
 cursor:pointer;
 }
 
+/* Customer info form */
+.cart-box input, .cart-box select{
+width:100%;
+margin-bottom:8px;
+padding:8px;
+border-radius:5px;
+border:none;
+}
+.cart-box select{cursor:pointer}
+
 /* FOOTER */
 footer{
 background:#220000;
@@ -187,6 +198,7 @@ margin-top:40px;
 @media(max-width:768px){
 header h1{font-size:35px}
 section{margin:20px}
+.cart-box{width:100%;}
 }
 </style>
 </head>
@@ -269,7 +281,23 @@ section{margin:20px}
 <h3>Your Cart</h3>
 <ul id="cartList"></ul>
 <h4 id="totalAmount"></h4>
-<button onclick="placeOrder()" style="margin-top:10px;background:gold;border:none;padding:10px;border-radius:10px;width:100%;font-weight:bold;">Order via WhatsApp</button>
+
+<!-- Customer Info Form -->
+<div style="margin-top:15px;">
+<input type="text" id="custName" placeholder="Your Name">
+<input type="text" id="custAddress" placeholder="Delivery Address">
+<input type="tel" id="custPhone" placeholder="Phone Number">
+
+<label style="color:gold;display:block;margin-bottom:5px;font-weight:bold;">Payment Method:</label>
+<select id="paymentMethod">
+  <option value="COD">Cash on Delivery</option>
+  <option value="Online Payment">Online Payment</option>
+</select>
+</div>
+
+<button onclick="placeOrder()" style="margin-top:10px;background:gold;border:none;padding:10px;border-radius:10px;width:100%;font-weight:bold;">
+Place Order via WhatsApp
+</button>
 </div>
 
 <footer>
@@ -308,7 +336,7 @@ ${item.qty}
 list.appendChild(li);
 });
 
-totalBox.innerHTML="Total: ₹"+total;
+totalBox.innerHTML=cart.length>0?"Total: ₹"+total:"";
 
 if(cart.length===0){
 list.innerHTML="<li>Cart is empty</li>";
@@ -336,21 +364,31 @@ document.getElementById("cartBox").classList.toggle("active");
 function placeOrder(){
 if(cart.length===0){alert("Cart is empty!");return;}
 
+let name=document.getElementById("custName").value.trim();
+let address=document.getElementById("custAddress").value.trim();
+let phone=document.getElementById("custPhone").value.trim();
+let payment=document.getElementById("paymentMethod").value;
+
+if(!name || !address || !phone){
+alert("Please fill in all your details!");
+return;
+}
+
 let message="New Order:%0A";
 let total=0;
-
 cart.forEach(i=>{
 let itemTotal=i.price*i.qty;
 total+=itemTotal;
 message+=`${i.name} x ${i.qty} = ₹${itemTotal}%0A`;
 });
+message+=`Total: ₹${total}%0A`;
+message+=`Customer Name: ${name}%0A`;
+message+=`Address: ${address}%0A`;
+message+=`Phone: ${phone}%0A`;
+message+=`Payment Method: ${payment}`;
 
-message+=`Total: ₹${total}`;
-
-// 🔥 PUT YOUR WHATSAPP NUMBER WITH 91 (NO +)
-let phone="917893280116";
-
-window.open(`https://wa.me/${phone}?text=${message}`,"_blank");
+let waPhone="917893280116"; // your WhatsApp number
+window.open(`https://wa.me/${waPhone}?text=${message}`,"_blank");
 }
 </script>
 
