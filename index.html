@@ -11,7 +11,7 @@
 body{background:#1a0000;color:white}
 nav{background:#330000;padding:15px;text-align:center;color:gold;font-weight:bold;position:relative}
 .cart-count{position:absolute;top:12px;right:90px;background:gold;color:black;padding:4px 8px;border-radius:50%;font-weight:bold;font-size:14px}
-section{padding:40px}
+section{padding:30px}
 h2{color:gold;text-align:center;margin-bottom:20px}
 .menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}
 .item{background:#400000;padding:15px;border-radius:15px;text-align:center;border:1px solid gold}
@@ -27,7 +27,7 @@ input,select{width:100%;margin-bottom:8px;padding:6px;border-radius:6px;border:n
 footer{text-align:center;padding:20px;background:#220000;margin-top:30px}
 </style>
 
-<!-- Load Google Maps JS API -->
+<!-- Google Maps API (replace placeholder key later) -->
 <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY"></script>
 </head>
 <body>
@@ -37,7 +37,7 @@ footer{text-align:center;padding:20px;background:#220000;margin-top:30px}
   <span class="cart-count" id="cartCount">0</span>
 </nav>
 
-<!-- MENU SECTIONS (same as before) -->
+<!-- MANDI -->
 <section>
 <h2>🍖 Mandi Specials</h2>
 <div class="menu">
@@ -48,9 +48,76 @@ footer{text-align:center;padding:20px;background:#220000;margin-top:30px}
 </div>
 </section>
 
-<!-- (Repeat other menu sections here — Haleem, Starters, Biryani, Desserts, Beverages) -->
-<!-- ... same as your existing code ... -->
+<!-- HALEEM -->
+<section>
+<h2>🥣 Haleem Specials</h2>
+<div class="menu">
+<div class="item">Chicken Haleem ₹220<button onclick="addToCart('Chicken Haleem',220)">Add</button></div>
+<div class="item">Mutton Haleem ₹350<button onclick="addToCart('Mutton Haleem',350)">Add</button></div>
+<div class="item">Beef Haleem ₹300<button onclick="addToCart('Beef Haleem',300)">Add</button></div>
+</div>
+</section>
 
+<!-- SHAWARMA & ARABIAN -->
+<section>
+<h2>🥙 Shawarma & Arabian Delights</h2>
+<div class="menu">
+<div class="item">Chicken Shawarma Roll ₹299<button onclick="addToCart('Chicken Shawarma Roll',299)">Add</button></div>
+<div class="item">Chicken Shawarma Plate ₹350<button onclick="addToCart('Chicken Shawarma Plate',350)">Add</button></div>
+<div class="item">Beef Shawarma ₹370<button onclick="addToCart('Beef Shawarma',370)">Add</button></div>
+<div class="item">Falafel Platter ₹280<button onclick="addToCart('Falafel Platter',280)">Add</button></div>
+<div class="item">Hummus with Pita ₹180<button onclick="addToCart('Hummus with Pita',180)">Add</button></div>
+<div class="item">Arabic Grilled Chicken ₹270<button onclick="addToCart('Arabic Grilled Chicken',270)">Add</button></div>
+</div>
+</section>
+
+<!-- STARTERS & KEBABS -->
+<section>
+<h2>🍢 Starters & Kebabs</h2>
+<div class="menu">
+<div class="item">Chicken Seekh Kebab ₹290<button onclick="addToCart('Chicken Seekh Kebab',290)">Add</button></div>
+<div class="item">Reshmi Kebab ₹300<button onclick="addToCart('Reshmi Kebab',300)">Add</button></div>
+<div class="item">Murgh Malai Kebab ₹320<button onclick="addToCart('Murgh Malai Kebab',320)">Add</button></div>
+<div class="item">Mix Grill Platter ₹580<button onclick="addToCart('Mix Grill Platter',580)">Add</button></div>
+</div>
+</section>
+
+<!-- INDIAN CLASSICS -->
+<section>
+<h2>🍛 Indian Classics</h2>
+<div class="menu">
+<div class="item">Butter Chicken ₹350<button onclick="addToCart('Butter Chicken',350)">Add</button></div>
+<div class="item">Dal Makhani ₹180<button onclick="addToCart('Dal Makhani',180)">Add</button></div>
+<div class="item">Palak Paneer ₹220<button onclick="addToCart('Palak Paneer',220)">Add</button></div>
+<div class="item">Hyderabadi Marag ₹250<button onclick="addToCart('Hyderabadi Marag',250)">Add</button></div>
+<div class="item">Khichra Stew ₹300<button onclick="addToCart('Khichra Stew',300)">Add</button></div>
+<div class="item">Kathi Roll ₹180<button onclick="addToCart('Kathi Roll',180)">Add</button></div>
+</div>
+</section>
+
+<!-- SIDES & BREADS -->
+<section>
+<h2>🍞 Breads & Side Snacks</h2>
+<div class="menu">
+<div class="item">Garlic Naan ₹40<button onclick="addToCart('Garlic Naan',40)">Add</button></div>
+<div class="item">Cheese Naan ₹60<button onclick="addToCart('Cheese Naan',60)">Add</button></div>
+<div class="item">Rumali Roti ₹30<button onclick="addToCart('Rumali Roti',30)">Add</button></div>
+<div class="item">French Fries ₹80<button onclick="addToCart('French Fries',80)">Add</button></div>
+</div>
+</section>
+
+<!-- DESSERTS & BEVERAGES -->
+<section>
+<h2>🍹 Desserts & Drinks</h2>
+<div class="menu">
+<div class="item">Falooda ₹120<button onclick="addToCart('Falooda',120)">Add</button></div>
+<div class="item">Arabic Tea (Karak) ₹60<button onclick="addToCart('Arabic Tea (Karak)',60)">Add</button></div>
+<div class="item">Cold Coffee ₹100<button onclick="addToCart('Cold Coffee',100)">Add</button></div>
+<div class="item">Fruit Milkshake ₹110<button onclick="addToCart('Fruit Milkshake',110)">Add</button></div>
+</div>
+</section>
+
+<!-- CART BUTTON -->
 <div class="cart-btn" onclick="toggleCart()">🛒 Cart</div>
 
 <div class="cart-box" id="cartBox">
@@ -85,37 +152,29 @@ footer{text-align:center;padding:20px;background:#220000;margin-top:30px}
 let cart=[], orderStatusMap={}, map, marker;
 const DELIVERY = 28;
 
-// Add to cart + update count
 function addToCart(name,price){
   let item = cart.find(i=>i.name===name);
-  if(item){item.qty++}
-  else{cart.push({name,price,qty:1})}
+  if(item){item.qty++} else {cart.push({name,price,qty:1})}
   updateCartCount();
   renderCart();
 }
 
-// Render cart + totals
 function renderCart(){
   let list=document.getElementById("cartList"), totalBox=document.getElementById("total");
   list.innerHTML=""; let subtotal=0;
   cart.forEach(i=>{subtotal+=i.price*i.qty; list.innerHTML+=`<li>${i.name} x ${i.qty}</li>`});
   if(cart.length>0){
     let total=subtotal+DELIVERY;
-    totalBox.innerHTML = "Subtotal: ₹"+subtotal+"<br>Delivery: ₹"+DELIVERY+"<br><b>Total: ₹"+total+"</b>";
+    totalBox.innerHTML="Subtotal: ₹"+subtotal+"<br>Delivery: ₹"+DELIVERY+"<br><b>Total: ₹"+total+"</b>";
   } else totalBox.innerHTML="Cart Empty";
 }
 
-// Update badge count
 function updateCartCount(){
   document.getElementById("cartCount").innerText = cart.reduce((a,b)=>a+b.qty,0);
 }
 
-// Toggle cart
-function toggleCart(){
-  document.getElementById("cartBox").classList.toggle("active");
-}
+function toggleCart(){document.getElementById("cartBox").classList.toggle("active");}
 
-// Place order and send WhatsApp message
 function placeOrder(){
   if(cart.length===0){alert("Cart Empty");return;}
   let name=document.getElementById("custName").value.trim();
@@ -124,8 +183,7 @@ function placeOrder(){
   if(!name||!address||!phone){alert("Fill all details");return;}
 
   let orderID="AARMA"+Math.floor(Math.random()*100000);
-  orderStatusMap[orderID] = "Order Placed";
-
+  orderStatusMap[orderID]="Order Placed";
   setTimeout(()=>orderStatusMap[orderID]="Preparing",5000);
   setTimeout(()=>orderStatusMap[orderID]="Out for Delivery",10000);
   setTimeout(()=>orderStatusMap[orderID]="Delivered",15000);
@@ -134,50 +192,40 @@ function placeOrder(){
   cart.forEach(i=>subtotal+=i.price*i.qty);
   let total=subtotal+DELIVERY;
 
-  let message = 
+  let message =
     `Order ID: ${orderID}%0A`+
     `Customer: ${name}%0A`+
     `Address: ${address}%0A`+
-    `Mobile: ${phone}%0A%0A`;
-
+    `Phone: ${phone}%0A%0A`;
   cart.forEach(i=>message+=`${i.name} x ${i.qty} = ₹${i.price*i.qty}%0A`);
-
-  message += `%0ASubtotal: ₹${subtotal}%0ADelivery: ₹${DELIVERY}%0ATotal: ₹${total}`;
+  message+=`%0ASubtotal: ₹${subtotal}%0ADelivery: ₹${DELIVERY}%0ATotal: ₹${total}`;
 
   window.open(`https://wa.me/917893280116?text=${message}`);
   cart=[]; updateCartCount(); renderCart(); toggleCart();
 }
 
-// Start tracking and show map
 function startTracking(){
   let id=document.getElementById("trackId").value.trim();
   if(!orderStatusMap[id]){document.getElementById("orderStatus").innerText="Invalid Order ID"; return;}
-
   document.getElementById("orderStatus").innerText="Status: "+orderStatusMap[id];
 
-  // Initialize map if not already
   if(!map){
-    map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 15,
-      center: {lat:17.5, lng:78.4}
-    });
-    marker = new google.maps.Marker({map: map});
+    map=new google.maps.Map(document.getElementById("map"),{zoom:15,center:{lat:17.5,lng:78.4}});
+    marker=new google.maps.Marker({map:map});
   }
-
-  // Simulate movement (demo route)
-  let route = [
-    {lat:17.5, lng:78.4},
+  let route=[
+    {lat:17.5,lng:78.4},
     {lat:17.51,lng:78.41},
     {lat:17.52,lng:78.42},
     {lat:17.53,lng:78.43}
   ];
   let i=0;
-  let interval = setInterval(()=>{
-    if(i>=route.length){clearInterval(interval); return;}
+  let interval=setInterval(()=>{
+    if(i>=route.length){clearInterval(interval);return;}
     marker.setPosition(route[i]);
     map.setCenter(route[i]);
     i++;
-  }, 2000);
+  },2000);
 }
 </script>
 
