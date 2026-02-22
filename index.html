@@ -186,16 +186,6 @@ AARMA Arabian Restaurant | Siddipet
 </div>
 </section>
 
-<section>
-<h2>🍹 Desserts & Drinks</h2>
-<div class="menu">
-<div class="item">Falooda ₹120<button onclick="addToCart('Falooda',120)">Add</button></div>
-<div class="item">Arabic Tea (Karak) ₹60<button onclick="addToCart('Arabic Tea (Karak)',60)">Add</button></div>
-<div class="item">Cold Coffee ₹100<button onclick="addToCart('Cold Coffee',100)">Add</button></div>
-<div class="item">Fruit Milkshake ₹110<button onclick="addToCart('Fruit Milkshake',110)">Add</button></div>
-</div>
-</section>
-
 <div class="cart-btn" onclick="toggleCart()">
 🛒 Cart (<span id="cartCount">0</span>)
 </div>
@@ -321,10 +311,11 @@ let total=subtotal+DELIVERY;
 
 currentOrderID="AARMA"+Math.floor(Math.random()*100000);
 
-orders[currentOrderID]={status:"Waiting for Payment"};
+orders[currentOrderID]={status:"Waiting for Payment", name, address, phone, total};
 saveOrders();
 
-let upiID="7893280116@ybl";
+// YOUR UPI ID here
+let upiID="7893280116@ybl"; // ✅ Your UPI ID
 let upiLink=`upi://pay?pa=${upiID}&pn=AARMA%20Arabian%20Restaurant&am=${total}&cu=INR&tn=Order%20${currentOrderID}`;
 
 alert("Order ID: "+currentOrderID+"\nPay ₹"+total+" to confirm.");
