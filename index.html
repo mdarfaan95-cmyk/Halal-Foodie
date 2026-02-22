@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AARMA Arabian Restaurant | Siddipet</title>
+<title>Halal Foodie| Siddipet</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
@@ -118,7 +118,7 @@ margin-top:30px
 <body>
 
 <nav>
-AARMA Arabian Restaurant | Siddipet
+Halal Foodie | Siddipet
 </nav>
 
 <!-- FULL MENU (UNCHANGED) -->
@@ -231,7 +231,7 @@ Place Order
 
 <footer>
 📞 7893280116 | 📧 mdarfaan95@gmail.com <br>
-© 2026 AARMA Arabian Restaurant | Siddipet
+© 2026 Halal Foodie | Siddipet
 </footer>
 
 <script>
@@ -329,7 +329,7 @@ orderItems+=`${i.name} x${i.qty} - ₹${i.price*i.qty}\n`;
 
 let total=subtotal+DELIVERY;
 
-currentOrderID="AARMA"+Math.floor(Math.random()*100000);
+currentOrderID=“Halal Foodie”+Math.floor(Math.random()*100000);
 
 let paymentText = payment==="upi" ? "UPI Payment" : "Cash on Delivery";
 
@@ -337,7 +337,7 @@ orders[currentOrderID]={status:"Order Placed"};
 saveOrders();
 
 let message=
-`🛒 New Order - AARMA Restaurant
+`🛒 New Order - Halal Foodie
 
 Order ID: ${currentOrderID}
 
@@ -362,7 +362,7 @@ if(payment==="upi"){
 orders[currentOrderID].status="Waiting for Payment";
 saveOrders();
 let upiID="7893280116@ybl";
-let upiLink=`upi://pay?pa=${upiID}&pn=AARMA%20Arabian%20Restaurant&am=${total}&cu=INR&tn=Order%20${currentOrderID}`;
+let upiLink=`upi://pay?pa=${upiID}&pn=Halal%20Foodie%20&am=${total}&cu=INR&tn=Order%20${currentOrderID}`;
 setTimeout(()=>{window.location.href=upiLink;},2000);
 }else{
 orders[currentOrderID].status="Preparing";
