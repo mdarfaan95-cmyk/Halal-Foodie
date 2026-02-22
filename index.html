@@ -55,7 +55,7 @@ font-weight:bold;
 margin-bottom:10px
 }
 
-input{
+input,select{
 width:100%;
 margin-bottom:8px;
 padding:8px;
@@ -121,7 +121,7 @@ margin-top:30px
 AARMA Arabian Restaurant | Siddipet
 </nav>
 
-<!-- FULL MENU -->
+<!-- FULL MENU (UNCHANGED) -->
 
 <section>
 <h2>🍖 Mandi Specials</h2>
@@ -210,12 +210,15 @@ AARMA Arabian Restaurant | Siddipet
 <input type="text" id="custAddress" placeholder="Delivery Address">
 <input type="tel" id="custPhone" placeholder="Phone Number">
 
-<button onclick="placeOrder()" style="background:gold;width:100%;padding:10px;border:none;border-radius:8px;font-weight:bold">
-Pay via UPI
-</button>
+<h4 style="color:gold;margin-top:10px;">Select Payment Method</h4>
+<select id="paymentMethod">
+<option value="">-- Choose Payment --</option>
+<option value="upi">UPI Payment</option>
+<option value="cod">Cash on Delivery (COD)</option>
+</select>
 
-<button onclick="confirmPayment()" style="background:#4CAF50;width:100%;padding:10px;border:none;border-radius:8px;font-weight:bold;margin-top:8px">
-I Have Paid ✅
+<button onclick="placeOrder()" style="background:gold;width:100%;padding:10px;border:none;border-radius:8px;font-weight:bold">
+Place Order
 </button>
 </div>
 
@@ -304,55 +307,76 @@ document.getElementById("cartBox").classList.toggle("active");
 }
 
 function placeOrder(){
+
 if(cart.length===0){alert("Cart Empty");return;}
 
 let name=document.getElementById("custName").value.trim();
 let address=document.getElementById("custAddress").value.trim();
 let phone=document.getElementById("custPhone").value.trim();
+let payment=document.getElementById("paymentMethod").value;
 
-if(!name||!address||!phone){
-alert("Please fill all details");
+if(!name||!address||!phone||!payment){
+alert("Please fill all details and select payment method");
 return;
 }
 
 let subtotal=0;
-cart.forEach(i=>subtotal+=i.price*i.qty);
+let orderItems="";
+cart.forEach(i=>{
+subtotal+=i.price*i.qty;
+orderItems+=`${i.name} x${i.qty} - ₹${i.price*i.qty}\n`;
+});
+
 let total=subtotal+DELIVERY;
 
 currentOrderID="AARMA"+Math.floor(Math.random()*100000);
 
-orders[currentOrderID]={status:"Waiting for Payment"};
+let paymentText = payment==="upi" ? "UPI Payment" : "Cash on Delivery";
+
+orders[currentOrderID]={status:"Order Placed"};
 saveOrders();
 
+let message=
+`🛒 New Order - AARMA Restaurant
+
+Order ID: ${currentOrderID}
+
+Name: ${name}
+Phone: ${phone}
+Address: ${address}
+
+Items:
+${orderItems}
+
+Delivery: ₹${DELIVERY}
+Total: ₹${total}
+
+Payment: ${paymentText}
+`;
+
+let yourNumber="917893280116";
+let whatsappURL=`https://wa.me/${yourNumber}?text=${encodeURIComponent(message)}`;
+window.open(whatsappURL,"_blank");
+
+if(payment==="upi"){
+orders[currentOrderID].status="Waiting for Payment";
+saveOrders();
 let upiID="7893280116@ybl";
 let upiLink=`upi://pay?pa=${upiID}&pn=AARMA%20Arabian%20Restaurant&am=${total}&cu=INR&tn=Order%20${currentOrderID}`;
-
-alert("Order ID: "+currentOrderID+"\nPay ₹"+total+" to confirm.");
-window.location.href=upiLink;
-}
-
-function confirmPayment(){
-if(!currentOrderID){alert("No pending order.");return;}
-
+setTimeout(()=>{window.location.href=upiLink;},2000);
+}else{
 orders[currentOrderID].status="Preparing";
 saveOrders();
+setTimeout(()=>{orders[currentOrderID].status="Out for Delivery";saveOrders();},10000);
+setTimeout(()=>{orders[currentOrderID].status="Delivered";saveOrders();},20000);
+}
 
-setTimeout(()=>{
-orders[currentOrderID].status="Out for Delivery";
-saveOrders();
-},10000);
-
-setTimeout(()=>{
-orders[currentOrderID].status="Delivered";
-saveOrders();
-},20000);
+alert("Order Placed! Order ID: "+currentOrderID);
 
 cart=[];
 updateCartCount();
 renderCart();
 toggleCart();
-
-alert("Payment confirmed. Order is preparing.");
 }
 
 function startTracking(){
@@ -361,8 +385,7 @@ if(!orders[id]){
 document.getElementById("orderStatus").innerText="Invalid Order ID";
 return;
 }
-document.getElementById("orderStatus").innerText=
-"Status: "+orders[id].status;
+document.getElementById("orderStatus").innerText="Status: "+orders[id].status;
 }
 </script>
 
