@@ -3,125 +3,58 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Halal Foodie| Siddipet</title>
+<title>Halal Foodie | Siddipet</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
 body{background:#1a0000;color:white}
-nav{background:#330000;padding:15px;text-align:center;color:gold;font-weight:bold}
+nav{background:#330000;padding:15px;text-align:center;color:gold;font-weight:bold;font-size:18px}
 section{padding:30px}
 h2{color:gold;text-align:center;margin-bottom:20px}
 .menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}
 .item{background:#400000;padding:15px;border-radius:15px;text-align:center;border:1px solid gold}
 .item button{margin-top:10px;background:gold;border:none;padding:6px 12px;border-radius:10px;cursor:pointer;font-weight:bold}
-
 .cart-btn{
-position:fixed;
-bottom:20px;
-right:20px;
-background:gold;
-color:black;
-padding:12px 20px;
-border-radius:30px;
-cursor:pointer;
-font-weight:bold;
+position:fixed;bottom:20px;right:20px;background:gold;color:black;
+padding:12px 20px;border-radius:30px;cursor:pointer;font-weight:bold;
 box-shadow:0 0 10px rgba(0,0,0,0.5)
 }
-
 .cart-box{
-position:fixed;
-right:-400px;
-top:0;
-width:360px;
-height:100%;
-background:#220000;
-padding:20px;
-transition:.4s;
-overflow:auto;
-z-index:1000
+position:fixed;right:-400px;top:0;width:360px;height:100%;
+background:#220000;padding:20px;transition:.4s;overflow:auto;z-index:1000
 }
-
 .cart-box.active{right:0}
-
 .back-btn{
-background:#999;
-color:black;
-border:none;
-padding:8px 12px;
-border-radius:6px;
-cursor:pointer;
-font-weight:bold;
-margin-bottom:10px
+background:#999;color:black;border:none;padding:8px 12px;
+border-radius:6px;cursor:pointer;font-weight:bold;margin-bottom:10px
 }
-
 input,select{
-width:100%;
-margin-bottom:8px;
-padding:8px;
-border-radius:6px;
-border:none
+width:100%;margin-bottom:8px;padding:8px;border-radius:6px;border:none
 }
-
 .cart-item{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:8px;
-background:#330000;
-padding:6px;
-border-radius:8px
+display:flex;justify-content:space-between;align-items:center;
+margin-bottom:8px;background:#330000;padding:6px;border-radius:8px
 }
-
 .qty-btn{
-background:gold;
-border:none;
-padding:2px 6px;
-margin:0 4px;
-border-radius:4px;
-cursor:pointer;
-font-weight:bold
+background:gold;border:none;padding:2px 6px;margin:0 4px;
+border-radius:4px;cursor:pointer;font-weight:bold
 }
-
 .remove-btn{
-background:red;
-color:white;
-border:none;
-padding:2px 6px;
-border-radius:4px;
-cursor:pointer
+background:red;color:white;border:none;padding:2px 6px;border-radius:4px;cursor:pointer
 }
-
 .track-box{
-background:#330000;
-padding:20px;
-margin:30px;
-border-radius:15px;
-text-align:center
+background:#330000;padding:20px;margin:30px;border-radius:15px;text-align:center
 }
-
-.status{
-color:gold;
-font-weight:bold;
-margin-top:10px
-}
-
-footer{
-text-align:center;
-padding:20px;
-background:#220000;
-margin-top:30px
-}
+.status{color:gold;font-weight:bold;margin-top:10px}
+footer{text-align:center;padding:20px;background:#220000;margin-top:30px}
 </style>
 </head>
 
 <body>
 
-<nav>
-Halal Foodie | Siddipet
-</nav>
-
-<!-- FULL MENU (UNCHANGED) -->
+<nav>Halal Foodie | Siddipet</nav>
 
 <section>
 <h2>🍖 Mandi Specials</h2>
@@ -133,72 +66,7 @@ Halal Foodie | Siddipet
 </div>
 </section>
 
-<section>
-<h2>🥣 Haleem Specials</h2>
-<div class="menu">
-<div class="item">Chicken Haleem ₹120<button onclick="addToCart('Chicken Haleem',120)">Add</button></div>
-<div class="item">Mutton Haleem ₹260<button onclick="addToCart('Mutton Haleem',260)">Add</button></div>
-<div class="item">Beef Haleem ₹146<button onclick="addToCart('Beef Haleem',146)">Add</button></div>
-</div>
-</section>
-
-<section>
-<h2>🥙 Shawarma & Arabian Delights</h2>
-<div class="menu">
-<div class="item">Chicken Shawarma Roll ₹299<button onclick="addToCart('Chicken Shawarma Roll',299)">Add</button></div>
-<div class="item">Chicken Shawarma Plate ₹350<button onclick="addToCart('Chicken Shawarma Plate',350)">Add</button></div>
-<div class="item">Beef Shawarma ₹370<button onclick="addToCart('Beef Shawarma',370)">Add</button></div>
-<div class="item">Falafel Platter ₹280<button onclick="addToCart('Falafel Platter',280)">Add</button></div>
-<div class="item">Hummus with Pita ₹180<button onclick="addToCart('Hummus with Pita',180)">Add</button></div>
-<div class="item">Arabic Grilled Chicken ₹270<button onclick="addToCart('Arabic Grilled Chicken',270)">Add</button></div>
-</div>
-</section>
-
-<section>
-<h2>🍢 Starters & Kebabs</h2>
-<div class="menu">
-<div class="item">Chicken Seekh Kebab ₹290<button onclick="addToCart('Chicken Seekh Kebab',290)">Add</button></div>
-<div class="item">Reshmi Kebab ₹300<button onclick="addToCart('Reshmi Kebab',300)">Add</button></div>
-<div class="item">Murgh Malai Kebab ₹320<button onclick="addToCart('Murgh Malai Kebab',320)">Add</button></div>
-<div class="item">Mix Grill Platter ₹580<button onclick="addToCart('Mix Grill Platter',580)">Add</button></div>
-</div>
-</section>
-
-<section>
-<h2>🍛 Indian Classics</h2>
-<div class="menu">
-<div class="item">Butter Chicken ₹350<button onclick="addToCart('Butter Chicken',350)">Add</button></div>
-<div class="item">Dal Makhani ₹180<button onclick="addToCart('Dal Makhani',180)">Add</button></div>
-<div class="item">Palak Paneer ₹220<button onclick="addToCart('Palak Paneer',220)">Add</button></div>
-<div class="item">Hyderabadi Marag ₹250<button onclick="addToCart('Hyderabadi Marag',250)">Add</button></div>
-<div class="item">Khichra Stew ₹300<button onclick="addToCart('Khichra Stew',300)">Add</button></div>
-<div class="item">Kathi Roll ₹180<button onclick="addToCart('Kathi Roll',180)">Add</button></div>
-</div>
-</section>
-
-<section>
-<h2>🍞 Breads & Side Snacks</h2>
-<div class="menu">
-<div class="item">Garlic Naan ₹40<button onclick="addToCart('Garlic Naan',40)">Add</button></div>
-<div class="item">Cheese Naan ₹60<button onclick="addToCart('Cheese Naan',60)">Add</button></div>
-<div class="item">Rumali Roti ₹30<button onclick="addToCart('Rumali Roti',30)">Add</button></div>
-<div class="item">French Fries ₹80<button onclick="addToCart('French Fries',80)">Add</button></div>
-</div>
-</section>
-
-<section>
-<h2>🍹 Desserts & Drinks</h2>
-<div class="menu">
-<div class="item">Falooda ₹120<button onclick="addToCart('Falooda',120)">Add</button></div>
-<div class="item">Arabic Tea (Karak) ₹60<button onclick="addToCart('Arabic Tea (Karak)',60)">Add</button></div>
-<div class="item">Cold Coffee ₹100<button onclick="addToCart('Cold Coffee',100)">Add</button></div>
-<div class="item">Fruit Milkshake ₹110<button onclick="addToCart('Fruit Milkshake',110)">Add</button></div>
-</div>
-</section>
-
-<div class="cart-btn" onclick="toggleCart()">
-🛒 Cart (<span id="cartCount">0</span>)
-</div>
+<div class="cart-btn" onclick="toggleCart()">🛒 Cart (<span id="cartCount">0</span>)</div>
 
 <div class="cart-box" id="cartBox">
 <button class="back-btn" onclick="toggleCart()">⬅ Back</button>
@@ -214,7 +82,7 @@ Halal Foodie | Siddipet
 <select id="paymentMethod">
 <option value="">-- Choose Payment --</option>
 <option value="upi">UPI Payment</option>
-<option value="cod">Cash on Delivery (COD)</option>
+<option value="cod">Cash on Delivery</option>
 </select>
 
 <button onclick="placeOrder()" style="background:gold;width:100%;padding:10px;border:none;border-radius:8px;font-weight:bold">
@@ -237,7 +105,6 @@ Place Order
 <script>
 let cart=[];
 let orders=JSON.parse(localStorage.getItem("orders"))||{};
-let currentOrderID=null;
 const DELIVERY=28;
 
 function saveOrders(){
@@ -316,7 +183,7 @@ let phone=document.getElementById("custPhone").value.trim();
 let payment=document.getElementById("paymentMethod").value;
 
 if(!name||!address||!phone||!payment){
-alert("Please fill all details and select payment method");
+alert("Please fill all details");
 return;
 }
 
@@ -328,19 +195,14 @@ orderItems+=`${i.name} x${i.qty} - ₹${i.price*i.qty}\n`;
 });
 
 let total=subtotal+DELIVERY;
+let orderID="HalalFoodie"+Math.floor(Math.random()*100000);
 
-currentOrderID=“Halal Foodie”+Math.floor(Math.random()*100000);
-
-let paymentText = payment==="upi" ? "UPI Payment" : "Cash on Delivery";
-
-orders[currentOrderID]={status:"Order Placed"};
+orders[orderID]={status:"Order Placed"};
 saveOrders();
 
-let message=
-`🛒 New Order - Halal Foodie
+let message=`🛒 New Order - Halal Foodie
 
-Order ID: ${currentOrderID}
-
+Order ID: ${orderID}
 Name: ${name}
 Phone: ${phone}
 Address: ${address}
@@ -350,28 +212,13 @@ ${orderItems}
 
 Delivery: ₹${DELIVERY}
 Total: ₹${total}
-
-Payment: ${paymentText}
+Payment: ${payment==="upi"?"UPI":"COD"}
 `;
 
-let yourNumber="917893280116";
-let whatsappURL=`https://wa.me/${yourNumber}?text=${encodeURIComponent(message)}`;
+let whatsappURL=`https://wa.me/917893280116?text=${encodeURIComponent(message)}`;
 window.open(whatsappURL,"_blank");
 
-if(payment==="upi"){
-orders[currentOrderID].status="Waiting for Payment";
-saveOrders();
-let upiID="7893280116@ybl";
-let upiLink=`upi://pay?pa=${upiID}&pn=Halal%20Foodie%20&am=${total}&cu=INR&tn=Order%20${currentOrderID}`;
-setTimeout(()=>{window.location.href=upiLink;},2000);
-}else{
-orders[currentOrderID].status="Preparing";
-saveOrders();
-setTimeout(()=>{orders[currentOrderID].status="Out for Delivery";saveOrders();},10000);
-setTimeout(()=>{orders[currentOrderID].status="Delivered";saveOrders();},20000);
-}
-
-alert("Order Placed! Order ID: "+currentOrderID);
+alert("Order Placed! Your Order ID: "+orderID);
 
 cart=[];
 updateCartCount();
